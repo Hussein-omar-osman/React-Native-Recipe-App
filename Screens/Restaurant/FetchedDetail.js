@@ -36,7 +36,6 @@ const FetchedDetail = () => {
         options
       );
       const json = await response.json();
-      console.log(json);
       setRecipe(json.meals[0]);
     } catch (error) {
       console.error(error);
