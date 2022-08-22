@@ -1,13 +1,26 @@
 import React from 'react';
-import { Button, View, Alert } from 'react-native';
-import YoutubeVideoPlayer from './componets/YoutubeVideoPlayer';
+import RecipeDetailScreen from './Screens/Restaurant/RecipeDetailScreen';
+import DATA from './config/Restaurant/DATA';
+import recipes from './config/Restaurant/Recipes';
+import HomeScreen from './Screens/Restaurant/HomeScreen';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import WelcomeScreen from './Screens/Restaurant/WelcomeScreen';
+import HomeStack from './navigation/homeStack';
+import BottomTabsNavigation from './navigation/BottomTabsNavigation';
 
-export default function App() {
+const Stack = createNativeStackNavigator();
+
+const App = () => {
   return (
-    <View style={{ marginTop: 50 }}>
-      <YoutubeVideoPlayer
-        videoUrl={'https://www.youtube.com/watch?v=D2gvhcf6occ'}
-      />
-    </View>
+    <NavigationContainer>
+      {/* <HomeStack /> */}
+      <BottomTabsNavigation />
+    </NavigationContainer>
   );
+};
+
+export default App;
+{
+  /* <RecipeDetailScreen recipe={recipes[0]} />; */
 }
