@@ -1,9 +1,11 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { View, Text, Image, ScrollView, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import categoryList from '../../config/categoryData';
 
 const CategoryScreen = () => {
+  const navigation = useNavigation();
   return (
     <SafeAreaView>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -21,7 +23,7 @@ const CategoryScreen = () => {
           {categoryList.map((item) => (
             <TouchableOpacity
               key={item.id}
-              onPress={() => console.log(item.name)}
+              onPress={() => navigation.navigate('CategoryDetail')}
               activeOpacity={0.8}
             >
               <View

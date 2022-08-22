@@ -7,6 +7,7 @@ import HomeStack from './homeStack';
 import SearchScreen from '../Screens/Restaurant/SearchScreen';
 import SearchStack from './searchStack';
 import CategoryScreen from '../Screens/Restaurant/CategoryScreen';
+import CategoryStack from './categoryStack';
 const Tab = createBottomTabNavigator();
 
 function BottomTabsNavigation() {
@@ -41,7 +42,7 @@ function BottomTabsNavigation() {
       />
       <Tab.Screen
         name='CategoryTab'
-        component={CategoryScreen}
+        component={CategoryStack}
         options={{
           title: 'Category',
           tabBarIcon: ({ focused, size, color }) => (
