@@ -16,43 +16,33 @@ const { height } = Dimensions.get('window');
 import { Ionicons } from '@expo/vector-icons';
 import colors from '../../config/Restaurant/colors';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import SingleIngredient from '../../componets/SingleIngredient';
-import YoutubeVideoPlayer from '../../componets/YoutubeVideoPlayer';
+import ResultsFound from '../../componets/ResultsFound';
 
 const CategoryDetail = () => {
   const route = useRoute();
-  const { url, img } = route.params;
-  const [recipe, setRecipe] = useState([]);
-  const [show, setShow] = useState(false);
+  const { name, img } = route.params;
+  const [result, setResult] = useState([]);
   const navigation = useNavigation();
+  console.log(name);
+  const searchData = async () => {
+    const options = {
+      headers: { 'content-type': 'application/json' },
+    };
+    try {
+      const response = await fetch(
+        `https://www.themealdb.com/api/json/v1/1/filter.php?c=${name}`,
+        options
+      );
+      const json = await response.json();
+      setResult(json);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-  // const searchData = async () => {
-  //   const options = {
-  //     headers: { 'content-type': 'application/json' },
-  //   };
-  //   try {
-  //     const response = await fetch(
-  //       `https://www.themealdb.com/api/json/v1/1/lookup.php?i=byhkj`,
-  //       options
-  //     );
-  //     const json = await response.json();
-  //     setRecipe(json.meals[0]);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
-
-  // const toggleLoader = () => {
-  //   setShow(true);
-  //   setTimeout(() => {
-  //     setShow(false);
-  //   }, 3000);
-  // };
-
-  // useEffect(() => {
-  //   searchData();
-  //   toggleLoader();
-  // }, []);
+  useEffect(() => {
+    searchData();
+  }, []);
   return (
     <>
       <ScrollView>
@@ -86,6 +76,7 @@ const CategoryDetail = () => {
               />
             </TouchableOpacity>
             <TouchableOpacity
+              onPress={searchData}
               style={{
                 height: SPACING * 4.5,
                 width: SPACING * 4.5,
@@ -123,13 +114,12 @@ const CategoryDetail = () => {
                     fontWeight: '700',
                   }}
                 >
-                  Category Name
+                  {name}
                 </Text>
-                <Text>{url}</Text>
-                <Text>{img}</Text>
               </View>
             </View>
           </View>
+          <ResultsFound result={result} goto='CategoryDetail' />
         </View>
       </ScrollView>
     </>

@@ -25,7 +25,7 @@ const CategoryScreen = () => {
               key={item.id}
               onPress={() =>
                 navigation.navigate('CategoryDetail', {
-                  url: item.endPoint,
+                  name: item.name,
                   img: item.imgPath,
                 })
               }

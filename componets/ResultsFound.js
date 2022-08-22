@@ -64,7 +64,7 @@ const ResultsFound = ({ result, goto }) => {
                 marginVertical: SPACING / 2,
               }}
             >
-              {item.strArea} - {item.strCategory}
+              {item?.strArea} - {item?.strCategory}
             </Text>
           </TouchableOpacity>
         ))}
