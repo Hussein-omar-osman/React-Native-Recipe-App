@@ -8,6 +8,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import WelcomeScreen from './Screens/Restaurant/WelcomeScreen';
 import HomeStack from './navigation/homeStack';
 import BottomTabsNavigation from './navigation/BottomTabsNavigation';
+import CategoryScreen from './Screens/Restaurant/CategoryScreen';
 
 const Stack = createNativeStackNavigator();
 

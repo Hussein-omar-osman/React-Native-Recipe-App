@@ -6,6 +6,7 @@ import HomeScreen from '../Screens/Restaurant/HomeScreen';
 import HomeStack from './homeStack';
 import SearchScreen from '../Screens/Restaurant/SearchScreen';
 import SearchStack from './searchStack';
+import CategoryScreen from '../Screens/Restaurant/CategoryScreen';
 const Tab = createBottomTabNavigator();
 
 function BottomTabsNavigation() {
@@ -40,7 +41,7 @@ function BottomTabsNavigation() {
       />
       <Tab.Screen
         name='CategoryTab'
-        component={CategoriesScreen}
+        component={CategoryScreen}
         options={{
           title: 'Category',
           tabBarIcon: ({ focused, size, color }) => (
@@ -67,20 +68,6 @@ function BottomTabsNavigation() {
 }
 
 const SettingsScreen = () => {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Settings Screen</Text>
-    </View>
-  );
-};
-// const SearchScreen = () => {
-//   return (
-//     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-//       <Text>Settings Screen</Text>
-//     </View>
-//   );
-// };
-const CategoriesScreen = () => {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Settings Screen</Text>
