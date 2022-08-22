@@ -23,7 +23,12 @@ const CategoryScreen = () => {
           {categoryList.map((item) => (
             <TouchableOpacity
               key={item.id}
-              onPress={() => navigation.navigate('CategoryDetail')}
+              onPress={() =>
+                navigation.navigate('CategoryDetail', {
+                  url: item.endPoint,
+                  img: item.imgPath,
+                })
+              }
               activeOpacity={0.8}
             >
               <View

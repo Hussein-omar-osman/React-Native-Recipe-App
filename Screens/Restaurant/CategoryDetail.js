@@ -21,38 +21,38 @@ import YoutubeVideoPlayer from '../../componets/YoutubeVideoPlayer';
 
 const CategoryDetail = () => {
   const route = useRoute();
-  // const recipeId = route.params.url;
+  const { url, img } = route.params;
   const [recipe, setRecipe] = useState([]);
   const [show, setShow] = useState(false);
   const navigation = useNavigation();
 
-  const searchData = async () => {
-    const options = {
-      headers: { 'content-type': 'application/json' },
-    };
-    try {
-      const response = await fetch(
-        `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${recipeId}`,
-        options
-      );
-      const json = await response.json();
-      setRecipe(json.meals[0]);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  // const searchData = async () => {
+  //   const options = {
+  //     headers: { 'content-type': 'application/json' },
+  //   };
+  //   try {
+  //     const response = await fetch(
+  //       `https://www.themealdb.com/api/json/v1/1/lookup.php?i=byhkj`,
+  //       options
+  //     );
+  //     const json = await response.json();
+  //     setRecipe(json.meals[0]);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
-  const toggleLoader = () => {
-    setShow(true);
-    setTimeout(() => {
-      setShow(false);
-    }, 3000);
-  };
+  // const toggleLoader = () => {
+  //   setShow(true);
+  //   setTimeout(() => {
+  //     setShow(false);
+  //   }, 3000);
+  // };
 
-  useEffect(() => {
-    searchData();
-    toggleLoader();
-  }, []);
+  // useEffect(() => {
+  //   searchData();
+  //   toggleLoader();
+  // }, []);
   return (
     <>
       <ScrollView>
@@ -66,7 +66,7 @@ const CategoryDetail = () => {
               flexDirection: 'row',
               justifyContent: 'space-between',
             }}
-            source={require('../../assets/ct-beef.jpg')}
+            source={img}
           >
             <TouchableOpacity
               style={{
@@ -125,6 +125,8 @@ const CategoryDetail = () => {
                 >
                   Category Name
                 </Text>
+                <Text>{url}</Text>
+                <Text>{img}</Text>
               </View>
             </View>
           </View>

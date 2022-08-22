@@ -71,7 +71,7 @@ const SearchScreen = () => {
       </View>
 
       {result && result.meals !== null ? (
-        <ResultsFound result={result} />
+        <ResultsFound result={result} goto='SearchDetails' />
       ) : (
         <Text>Nothing Found</Text>
       )}

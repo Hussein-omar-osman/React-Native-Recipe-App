@@ -19,7 +19,7 @@ const { width } = Dimensions.get('window');
 
 const ITEM_WIDTH = width / 2 - SPACING * 3;
 
-const ResultsFound = ({ result }) => {
+const ResultsFound = ({ result, goto }) => {
   const navigation = useNavigation();
 
   return (
@@ -38,9 +38,7 @@ const ResultsFound = ({ result }) => {
             style={{ width: ITEM_WIDTH, marginBottom: SPACING * 2 }}
             key={item.idMeal}
             activeOpacity={0.7}
-            onPress={() =>
-              navigation.navigate('SearchDetails', { id: item.idMeal })
-            }
+            onPress={() => navigation.navigate(goto, { id: item.idMeal })}
           >
             <Image
               style={{
