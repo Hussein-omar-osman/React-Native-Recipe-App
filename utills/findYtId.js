@@ -1,8 +1,7 @@
 const findId = (url) => {
   let idxV = url.indexOf('v') + 2;
   let id = url.slice(idxV);
-  console.log(url);
-  console.log(id);
+
   return id;
 };
 

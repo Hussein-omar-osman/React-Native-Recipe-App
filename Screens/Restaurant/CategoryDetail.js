@@ -23,7 +23,6 @@ const CategoryDetail = () => {
   const { name, img } = route.params;
   const [result, setResult] = useState([]);
   const navigation = useNavigation();
-  console.log(name);
   const searchData = async () => {
     const options = {
       headers: { 'content-type': 'application/json' },
@@ -119,7 +118,7 @@ const CategoryDetail = () => {
               </View>
             </View>
           </View>
-          <ResultsFound result={result} goto='CategoryDetail' />
+          <ResultsFound result={result} goto='MealDetails' />
         </View>
       </ScrollView>
     </>
