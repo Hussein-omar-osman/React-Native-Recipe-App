@@ -24,12 +24,12 @@ const CountryScreen = () => {
           {countryList.map((item) => (
             <TouchableOpacity
               key={item.id}
-              // onPress={() =>
-              //   navigation.navigate('CategoryDetail', {
-              //     name: item.name,
-              //     img: item.imgPath,
-              //   })
-              // }
+              onPress={() =>
+                navigation.navigate('CountryDetail', {
+                  name: item.name,
+                  img: item.imgPath,
+                })
+              }
               activeOpacity={0.8}
             >
               <View

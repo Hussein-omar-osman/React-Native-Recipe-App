@@ -7,6 +7,7 @@ import HomeStack from './homeStack';
 import SearchStack from './searchStack';
 import CategoryStack from './categoryStack';
 import CountryScreen from '../Screens/Restaurant/CountryScreen';
+import CountryStack from './countryStack';
 const Tab = createBottomTabNavigator();
 
 function BottomTabsNavigation() {
@@ -55,7 +56,7 @@ function BottomTabsNavigation() {
       />
       <Tab.Screen
         name='CountryTab'
-        component={CountryScreen}
+        component={CountryStack}
         options={{
           title: 'Origin',
           tabBarIcon: ({ focused, size, color }) => (
@@ -66,13 +67,5 @@ function BottomTabsNavigation() {
     </Tab.Navigator>
   );
 }
-
-const SettingsScreen = () => {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Settings Screen</Text>
-    </View>
-  );
-};
 
 export default BottomTabsNavigation;
