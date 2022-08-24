@@ -21,7 +21,7 @@ export default function YoutubeVideoPlayer({ videoUrl }) {
     <View style={{ marginTop: 50 }}>
       <YoutubePlayer
         height={300}
-        play={playing}
+        play={true}
         videoId={findId(videoUrl)}
         onChangeState={onStateChange}
       />

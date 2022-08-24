@@ -2,11 +2,9 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { View, Text } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import HomeScreen from '../Screens/Restaurant/HomeScreen';
+import { Entypo } from '@expo/vector-icons';
 import HomeStack from './homeStack';
-import SearchScreen from '../Screens/Restaurant/SearchScreen';
 import SearchStack from './searchStack';
-import CategoryScreen from '../Screens/Restaurant/CategoryScreen';
 import CategoryStack from './categoryStack';
 const Tab = createBottomTabNavigator();
 
@@ -44,7 +42,7 @@ function BottomTabsNavigation() {
         name='CategoryTab'
         component={CategoryStack}
         options={{
-          title: 'Category',
+          title: 'Meals',
           tabBarIcon: ({ focused, size, color }) => (
             <MaterialCommunityIcons
               name='microsoft-xbox-controller-menu'
@@ -58,9 +56,9 @@ function BottomTabsNavigation() {
         name='SettingsTab'
         component={SettingsScreen}
         options={{
-          title: 'Country',
+          title: 'Origin',
           tabBarIcon: ({ focused, size, color }) => (
-            <MaterialCommunityIcons name='city' size={size} color={color} />
+            <Entypo name='location-pin' size={size} color={color} />
           ),
         }}
       />

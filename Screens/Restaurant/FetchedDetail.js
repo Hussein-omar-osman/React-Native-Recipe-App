@@ -46,7 +46,7 @@ const FetchedDetail = () => {
     setShow(true);
     setTimeout(() => {
       setShow(false);
-    }, 3000);
+    }, 4500);
   };
 
   useEffect(() => {
