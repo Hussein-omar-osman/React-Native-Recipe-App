@@ -6,6 +6,7 @@ import { Entypo } from '@expo/vector-icons';
 import HomeStack from './homeStack';
 import SearchStack from './searchStack';
 import CategoryStack from './categoryStack';
+import CountryScreen from '../Screens/Restaurant/CountryScreen';
 const Tab = createBottomTabNavigator();
 
 function BottomTabsNavigation() {
@@ -53,8 +54,8 @@ function BottomTabsNavigation() {
         }}
       />
       <Tab.Screen
-        name='SettingsTab'
-        component={SettingsScreen}
+        name='CountryTab'
+        component={CountryScreen}
         options={{
           title: 'Origin',
           tabBarIcon: ({ focused, size, color }) => (
