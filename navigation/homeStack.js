@@ -1,6 +1,4 @@
 import React from 'react';
-// import DATA from './config/Restaurant/DATA';
-// import recipes from './config/Restaurant/Recipes';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from '../Screens/Restaurant/HomeScreen';
 import RecipeDetailScreen from '../Screens/Restaurant/RecipeDetailScreen';

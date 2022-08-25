@@ -1,6 +1,5 @@
+import React from 'react';
 import { Text, View, Dimensions } from 'react-native';
-import React, { useState } from 'react';
-import { Ionicons } from '@expo/vector-icons';
 import SPACING from '../config/SPACING';
 import colors from '../config/Restaurant/colors';
 const { width } = Dimensions.get('window');

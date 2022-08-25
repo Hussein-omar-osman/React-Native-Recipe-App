@@ -1,12 +1,10 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { View, Text } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import HomeStack from './homeStack';
 import SearchStack from './searchStack';
 import CategoryStack from './categoryStack';
-import CountryScreen from '../Screens/Restaurant/CountryScreen';
 import CountryStack from './countryStack';
 const Tab = createBottomTabNavigator();
 

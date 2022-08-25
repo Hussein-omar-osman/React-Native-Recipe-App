@@ -2,9 +2,7 @@ import {
   ActivityIndicator,
   Dimensions,
   ImageBackground,
-  SafeAreaView,
   ScrollView,
-  StyleSheet,
   Text,
   TouchableOpacity,
   View,
@@ -107,7 +105,11 @@ const CategoryDetail = () => {
                 alignItems: 'center',
               }}
             >
-              <View style={{ width: '70%' }}>
+              <View
+                style={{
+                  width: '70%',
+                }}
+              >
                 <Text
                   style={{
                     fontSize: SPACING * 3,

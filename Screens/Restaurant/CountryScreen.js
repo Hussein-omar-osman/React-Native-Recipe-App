@@ -2,7 +2,6 @@ import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { View, Text, Image, ScrollView, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import categoryList from '../../config/categoryData';
 import countryList from '../../config/countryData';
 
 const CountryScreen = () => {

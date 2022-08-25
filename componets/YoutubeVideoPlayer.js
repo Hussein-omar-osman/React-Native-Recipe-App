@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useRef } from 'react';
-import { Button, View, Alert } from 'react-native';
+import { View, Alert } from 'react-native';
 import YoutubePlayer from 'react-native-youtube-iframe';
 import findId from '../utills/findYtId';
 
@@ -25,7 +25,6 @@ export default function YoutubeVideoPlayer({ videoUrl }) {
         videoId={findId(videoUrl)}
         onChangeState={onStateChange}
       />
-      {/* <Button title={playing ? 'pause' : 'play'} onPress={togglePlaying} /> */}
     </View>
   );
 }

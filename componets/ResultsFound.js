@@ -1,19 +1,14 @@
 import {
   Image,
-  SafeAreaView,
   ScrollView,
-  StyleSheet,
   Text,
-  TextInput,
   TouchableOpacity,
   View,
   Dimensions,
 } from 'react-native';
-import React, { useState } from 'react';
-import { Ionicons } from '@expo/vector-icons';
+import React from 'react';
 import SPACING from '../config/SPACING';
 import colors from '../config/Restaurant/colors';
-import DATA from '../config/Restaurant/DATA';
 import { useNavigation } from '@react-navigation/native';
 const { width } = Dimensions.get('window');
 
