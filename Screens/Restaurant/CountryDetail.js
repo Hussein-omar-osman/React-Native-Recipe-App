@@ -20,6 +20,7 @@ import ResultsFound from '../../componets/ResultsFound';
 
 const CountryDetail = () => {
   const route = useRoute();
+  const [show, setShow] = useState(true);
   const { name, img } = route.params;
   const [result, setResult] = useState([]);
   const navigation = useNavigation();
@@ -34,6 +35,7 @@ const CountryDetail = () => {
       );
       const json = await response.json();
       setResult(json);
+      setShow(false);
     } catch (error) {
       console.error(error);
     }
@@ -118,6 +120,14 @@ const CountryDetail = () => {
               </View>
             </View>
           </View>
+          {show && (
+            <ActivityIndicator
+              size={'large'}
+              color='tomato'
+              animating={show}
+              style={{ marginBottom: 90, marginTop: 20 }}
+            />
+          )}
           <ResultsFound result={result} goto='OriginMealDetails' />
         </View>
       </ScrollView>
