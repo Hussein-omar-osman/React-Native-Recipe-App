@@ -4,6 +4,8 @@ import {
   TextInput,
   TouchableOpacity,
   Keyboard,
+  Image,
+  ActivityIndicator,
 } from 'react-native';
 import SPACING from '../../config/SPACING';
 import colors from '../../config/Restaurant/colors';
@@ -14,9 +16,11 @@ import ResultsFound from '../../componets/ResultsFound';
 const SearchScreen = () => {
   const [search, setSearch] = useState('');
   const [result, setResult] = useState([]);
+  const [show, setShow] = useState(false);
 
   const searchData = async () => {
     console.log(search);
+    setShow(true);
     const options = {
       headers: { 'content-type': 'application/json' },
     };
@@ -27,6 +31,7 @@ const SearchScreen = () => {
       );
       const json = await response.json();
       setResult(json);
+      setShow(false);
     } catch (error) {
       console.error(error);
     }
@@ -70,10 +75,22 @@ const SearchScreen = () => {
         </TouchableOpacity>
       </View>
 
+      {show && (
+        <ActivityIndicator
+          size={'large'}
+          color='tomato'
+          animating={show}
+          style={{ marginBottom: 90, marginTop: 20 }}
+        />
+      )}
+
       {result && result.meals !== null ? (
         <ResultsFound result={result} goto='SearchDetails' />
       ) : (
-        <Text>Nothing Found</Text>
+        <Image
+          source={require('../../assets/no_result.png')}
+          style={{ borderRadius: 10 }}
+        />
       )}
     </>
   );
