@@ -202,7 +202,7 @@ const RecipeDetailScreen = () => {
                 marginBottom: SPACING,
               }}
             >
-              Description
+              Instructions
             </Text>
             <Text
               style={{

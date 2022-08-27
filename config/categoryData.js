@@ -24,6 +24,21 @@ const categoryList = [
     name: 'Beef',
     imgPath: require('../assets/categories/ct-beef.jpg'),
   },
+  {
+    id: 6,
+    name: 'Vegetarian',
+    imgPath: require('../assets/categories/ct-vegetarian.jpg'),
+  },
+  {
+    id: 7,
+    name: 'Chicken',
+    imgPath: require('../assets/categories/ct-chicken.jpg'),
+  },
+  {
+    id: 8,
+    name: 'Pork',
+    imgPath: require('../assets/categories/ct-Pork.jpg'),
+  },
 ];
 
 export default categoryList;

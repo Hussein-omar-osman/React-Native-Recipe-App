@@ -24,51 +24,36 @@ const countryList = [
     name: 'Croatian',
     imgPath: require('../assets/flags/crotia.jpg'),
   },
-  // {
-  //   id: 5,
-  //   name: 'Dutch',
-  // imgPath: require('../assets/flags/'),
-  // },
-  // {
-  //   id: 6,
-  //   name: 'Egyptian',
-  // imgPath: require('../assets/flags/'),
-  // },
-  // {
-  //   id: 7,
-  //   name: 'French',
-  //   imgPath: require(''),
-  // },
-  // {
-  //   id: 8,
-  //   name: 'Greek',
-  //   imgPath: require(''),
-  // },
-  // {
-  //   id: 9,
-  //   name: 'Indian',
-  //   imgPath: require(''),
-  // },
-  // {
-  //   id: 10,
-  //   name: 'Irish',
-  //   imgPath: require(''),
-  // },
-  // {
-  //   id: 11,
-  //   name: 'Italian',
-  //   imgPath: require(''),
-  // },
-  // {
-  //   id: 12,
-  //   name: 'Jamaican',
-  //   imgPath: require(''),
-  // },
-  // {
-  //   id: 13,
-  //   name: 'Japanese',
-  //   imgPath: require(''),
-  // },
+  {
+    id: 6,
+    name: 'Egyptian',
+    imgPath: require('../assets/flags/Egyptian.jpg'),
+  },
+  {
+    id: 7,
+    name: 'French',
+    imgPath: require('../assets/flags/French.jpg'),
+  },
+  {
+    id: 8,
+    name: 'Indian',
+    imgPath: require('../assets/flags/Indian.jpg'),
+  },
+  {
+    id: 9,
+    name: 'Italian',
+    imgPath: require('../assets/flags/Italian.jpg'),
+  },
+  {
+    id: 10,
+    name: 'Japanese',
+    imgPath: require('../assets/flags/Japanese.jpg'),
+  },
+  {
+    id: 11,
+    name: 'Portuguese',
+    imgPath: require('../assets/flags/Portuguese.jpg'),
+  },
 ];
 
 export default countryList;

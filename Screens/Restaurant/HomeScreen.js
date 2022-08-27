@@ -132,7 +132,7 @@ const HomeScreen = () => {
                     marginVertical: SPACING / 2,
                   }}
                 >
-                  Canada - Chicken
+                  {item.area} - {item.category}
                 </Text>
               </TouchableOpacity>
             ))}
