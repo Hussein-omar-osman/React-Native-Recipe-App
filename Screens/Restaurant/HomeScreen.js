@@ -61,41 +61,7 @@ const HomeScreen = () => {
             </TouchableOpacity>
           </View>
         </View>
-        {/* <View style={{ width: '60%', marginTop: SPACING * 2 }}>
-            <Text style={{ fontSize: SPACING * 3, fontWeight: '700' }}>
-              What would you like to order?
-            </Text>
-          </View> */}
-        {/* <View
-            style={{
-              flexDirection: 'row',
-              backgroundColor: colors.light,
-              marginVertical: SPACING * 3,
-              padding: SPACING * 1.5,
-              borderRadius: SPACING,
-            }}
-          >
-            <TextInput
-              placeholder='Want to ..'
-              placeholderTextColor={colors.gray}
-              style={{
-                color: colors.gray,
-                fontSize: SPACING * 2,
-                marginLeft: SPACING,
-              }}
-              onChangeText={(text) => setSearch(text)}
-            />
-            <TouchableOpacity
-              style={{ marginLeft: 'auto' }}
-              onPress={searchData}
-            >
-              <Ionicons
-                name='search'
-                color={colors.gray}
-                size={SPACING * 2.7}
-              />
-            </TouchableOpacity>
-          </View> */}
+
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
@@ -166,10 +132,7 @@ const HomeScreen = () => {
                     marginVertical: SPACING / 2,
                   }}
                 >
-                  Today discount {item.discount}
-                </Text>
-                <Text style={{ fontSize: SPACING * 2, fontWeight: '700' }}>
-                  $ {item.price}
+                  Canada - Chicken
                 </Text>
               </TouchableOpacity>
             ))}

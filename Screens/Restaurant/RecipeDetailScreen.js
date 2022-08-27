@@ -95,36 +95,9 @@ const RecipeDetailScreen = () => {
                   {recipe.name}
                 </Text>
               </View>
-              <View
-                style={{
-                  padding: SPACING,
-                  paddingHorizontal: SPACING * 3,
-                  backgroundColor: colors.yellow,
-                  flexDirection: 'row',
-                  borderRadius: SPACING,
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}
-              >
-                <Ionicons
-                  name='star'
-                  color={colors.black}
-                  size={SPACING * 1.7}
-                />
-                <Text
-                  style={{
-                    fontSize: SPACING * 1.6,
-                    fontWeight: '600',
-                    marginLeft: SPACING / 2,
-                    color: colors.black,
-                  }}
-                >
-                  {recipe.rating}
-                </Text>
-              </View>
             </View>
             <View
-              style={{ flexDirection: 'row', justifyContent: 'space-between' }}
+              style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}
             >
               <View
                 style={{
@@ -178,33 +151,6 @@ const RecipeDetailScreen = () => {
                   }}
                 >
                   {recipe.del_time}
-                </Text>
-              </View>
-              <View
-                style={{
-                  padding: SPACING,
-                  paddingHorizontal: SPACING * 2,
-                  backgroundColor: colors.light,
-                  flexDirection: 'row',
-                  borderRadius: SPACING,
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}
-              >
-                <Ionicons
-                  name='restaurant'
-                  color={colors.gray}
-                  size={SPACING * 1.7}
-                />
-                <Text
-                  style={{
-                    fontSize: SPACING * 1.6,
-                    fontWeight: '600',
-                    marginLeft: SPACING / 2,
-                    color: colors.gray,
-                  }}
-                >
-                  {recipe.cooking_time}
                 </Text>
               </View>
             </View>
@@ -270,41 +216,6 @@ const RecipeDetailScreen = () => {
           </View>
         </View>
       </ScrollView>
-      <SafeAreaView>
-        <View style={{ padding: SPACING * 2 }}>
-          <TouchableOpacity
-            style={{
-              width: '100%',
-              padding: SPACING * 2,
-              backgroundColor: colors.black,
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'center',
-              borderRadius: SPACING * 2,
-            }}
-          >
-            <Text
-              style={{
-                fontSize: SPACING * 2,
-                color: colors.white,
-                fontWeight: '700',
-              }}
-            >
-              Choose this for
-            </Text>
-            <Text
-              style={{
-                fontSize: SPACING * 2,
-                color: colors.yellow,
-                fontWeight: '700',
-                marginLeft: SPACING / 2,
-              }}
-            >
-              $ {recipe.price}
-            </Text>
-          </TouchableOpacity>
-        </View>
-      </SafeAreaView>
     </>
   );
 };

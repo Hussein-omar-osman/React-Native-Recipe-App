@@ -1,25 +1,25 @@
-import Recipes from "./Recipes";
+import Recipes from './Recipes';
 
 const categories = [
   {
     id: 1,
-    title: "Main",
+    title: 'Main',
     recipes: Recipes,
   },
   {
     id: 2,
-    title: "Healthy Food",
-    recipes: [...Recipes.slice(4, 8)],
+    title: 'Healthy Food',
+    recipes: [...Recipes.slice(0, 2)],
   },
   {
     id: 3,
-    title: "Fast Food",
-    recipes: [...Recipes.slice(3, 7)],
+    title: 'Fast Food',
+    recipes: [...Recipes.slice(3, 5)],
   },
   {
     id: 4,
-    title: "Drinks",
-    recipes: [...Recipes.slice(2, 6)],
+    title: 'Drinks',
+    recipes: [...Recipes.slice(6, 7)],
   },
 ];
 
