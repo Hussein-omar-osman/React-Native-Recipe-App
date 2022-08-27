@@ -6,9 +6,10 @@ Recipe app also known as Receta app, this is a recipe app that help users search
 
 [Click here to download android apk](https://exp-shell-app-assets.s3.us-west-1.amazonaws.com/android/%40hussein-omar/receta-app-e3cba44b7f1d4a97b377dc347242affd-signed.apk)
 
-<!-- ### Screenshots:
+### Screenshots:
 
-![Screenshot](screenshot.png) -->
+![Screenshot](first-shot.png)
+![Screenshot](second-shot.png)
 
 ## Setup
 
