@@ -36,7 +36,7 @@ const HomeScreen = () => {
                 borderRadius: SPACING * 3,
                 marginRight: SPACING,
               }}
-              source={require('../../assets/restaurant/avatar.jpg')}
+              source={require('../../assets/unknow.png')}
             />
             <Text
               style={{
