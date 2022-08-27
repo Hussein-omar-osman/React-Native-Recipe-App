@@ -18,7 +18,7 @@ const CategoryScreen = () => {
           }}
         >
           <View style={{ marginBottom: 20 }}>
-            <Text style={{ fontSize: 35, fontWeight: '700' }}>Categories</Text>
+            <Text style={{ fontSize: 35, fontWeight: '700' }}>Meals</Text>
           </View>
           {categoryList.map((item) => (
             <TouchableOpacity

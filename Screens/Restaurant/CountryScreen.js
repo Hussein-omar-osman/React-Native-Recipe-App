@@ -18,7 +18,7 @@ const CountryScreen = () => {
           }}
         >
           <View style={{ marginBottom: 20 }}>
-            <Text style={{ fontSize: 35, fontWeight: '700' }}>Countries</Text>
+            <Text style={{ fontSize: 35, fontWeight: '700' }}>Origin</Text>
           </View>
           {countryList.map((item) => (
             <TouchableOpacity
