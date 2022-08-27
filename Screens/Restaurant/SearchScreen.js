@@ -15,6 +15,7 @@ import ResultsFound from '../../componets/ResultsFound';
 const SearchScreen = () => {
   const [search, setSearch] = useState('');
   const [result, setResult] = useState([]);
+  const [showIll, setShowIll] = useState(true);
   const [show, setShow] = useState(false);
 
   const searchData = async () => {
@@ -31,8 +32,10 @@ const SearchScreen = () => {
       const json = await response.json();
       setResult(json);
       setShow(false);
+      setShowIll(false);
     } catch (error) {
       console.error(error);
+      setShowIll(false);
     }
   };
 
@@ -82,7 +85,12 @@ const SearchScreen = () => {
           style={{ marginBottom: 90, marginTop: 20 }}
         />
       )}
-
+      {showIll && (
+        <Image
+          source={require('../../assets/search-illistartion.png')}
+          style={{ borderRadius: 10, width: 380, height: 380 }}
+        />
+      )}
       {result && result.meals !== null ? (
         <ResultsFound result={result} goto='SearchDetails' />
       ) : (
