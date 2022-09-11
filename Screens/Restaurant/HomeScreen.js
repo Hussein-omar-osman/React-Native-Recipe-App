@@ -28,26 +28,31 @@ const HomeScreen = () => {
     <SafeAreaView style={{ marginTop: 15 }}>
       <View style={{ padding: SPACING * 2 }}>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-            <Image
-              style={{
-                width: SPACING * 4.5,
-                height: SPACING * 4.5,
-                borderRadius: SPACING * 3,
-                marginRight: SPACING,
-              }}
-              source={require('../../assets/unknow.png')}
-            />
-            <Text
-              style={{
-                fontSize: SPACING * 1.7,
-                fontWeight: '800',
-                color: colors.dark,
-              }}
-            >
-              Erika
-            </Text>
-          </View>
+          <TouchableOpacity
+            onPress={() => navigation.openDrawer()}
+            activeOpacity={0.7}
+          >
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <Image
+                style={{
+                  width: SPACING * 4.5,
+                  height: SPACING * 4.5,
+                  borderRadius: SPACING * 3,
+                  marginRight: SPACING,
+                }}
+                source={require('../../assets/unknow.png')}
+              />
+              <Text
+                style={{
+                  fontSize: SPACING * 1.7,
+                  fontWeight: '800',
+                  color: colors.dark,
+                }}
+              >
+                unKnown
+              </Text>
+            </View>
+          </TouchableOpacity>
           <View style={{ flexDirection: 'row', alignItems: 'center' }}>
             <TouchableOpacity style={{ marginRight: SPACING }}>
               <Ionicons
@@ -56,7 +61,10 @@ const HomeScreen = () => {
                 color={colors.dark}
               />
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => navigation.openDrawer()}
+              activeOpacity={0.7}
+            >
               <Ionicons name='menu' size={SPACING * 3.5} color={colors.dark} />
             </TouchableOpacity>
           </View>
