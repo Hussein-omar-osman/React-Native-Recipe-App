@@ -20,7 +20,7 @@ const ingredients = [
 const recipes = [
   {
     id: 1,
-    name: 'Flesh Salad',
+    name: 'Fresh Salad',
     discount: '20%',
     price: 55,
     image: require('../../assets/restaurant/yoav-aziz-AiHJiRCwB3w-unsplash.jpeg'),
