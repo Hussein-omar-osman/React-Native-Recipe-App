@@ -12,6 +12,7 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
+import Login from '../../componets/authComp/Login';
 import Signup from '../../componets/authComp/Signup';
 // import { Button, SocialIcon } from 'react-native-elements';
 // import * as Facebook from 'expo-facebook';
@@ -19,7 +20,7 @@ import Signup from '../../componets/authComp/Signup';
 const appId = '1047121222092614';
 
 export default function AuthPage() {
-  const [page, setPage] = useState('register');
+  const [page, setPage] = useState('login');
   const onLoginPress = () => {};
 
   // const onFbLoginPress = async () => {
@@ -44,44 +45,7 @@ export default function AuthPage() {
   if (page === 'register') {
     return <Signup />;
   }
-  return (
-    <KeyboardAvoidingView style={styles.containerView} behavior='padding'>
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={styles.loginScreenContainer}>
-          <View style={styles.loginFormView}>
-            <Text style={styles.logoText}>Receta</Text>
-            <TextInput
-              placeholder='Username'
-              placeholderColor='#c4c3cb'
-              style={styles.loginFormTextInput}
-            />
-            <TextInput
-              placeholder='Password'
-              placeholderColor='#c4c3cb'
-              style={styles.loginFormTextInput}
-              secureTextEntry={true}
-            />
-            <TouchableOpacity style={styles.loginButton}>
-              <Text style={{ color: '#fff', fontSize: 20, fontWeight: '700' }}>
-                Login
-              </Text>
-            </TouchableOpacity>
-            {/* <Button
-              buttonStyle={styles.loginButton}
-              onPress={() => onLoginPress()}
-              title='Login'
-            />
-            <Button
-              containerStyle={styles.fbLoginButton}
-              type='clear'
-              onPress={() => onFbLoginPress()}
-              title='Login With Facebook'
-            /> */}
-          </View>
-        </View>
-      </TouchableWithoutFeedback>
-    </KeyboardAvoidingView>
-  );
+  return <Login />;
 }
 
 const styles = StyleSheet.create({
