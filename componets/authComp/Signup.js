@@ -1,41 +1,16 @@
 import React from 'react';
 import {
-  Alert,
-  Image,
   Keyboard,
   KeyboardAvoidingView,
   Text,
   TextInput,
   TouchableWithoutFeedback,
-  Pressable,
   View,
-  StyleSheet,
   TouchableOpacity,
 } from 'react-native';
 import styles from './styles';
 
 export default function Signup() {
-  const onLoginPress = () => {};
-
-  // const onFbLoginPress = async () => {
-  //   try {
-  //     await Facebook.initializeAsync({
-  //       appId,
-  //     });
-  //     const { type, token } = await Facebook.logInWithReadPermissionsAsync({
-  //       permissions: ['public_profile', 'email'],
-  //     });
-  //     if (type === 'success') {
-  //       const response = await fetch(
-  //         `https://graph.facebook.com/me?access_token=${token}`
-  //       );
-  //       Alert.alert('Logged in!', `Hi ${(await response.json()).name}!`);
-  //     }
-  //   } catch ({ message }) {
-  //     Alert.alert(`Facebook Login Error: ${message}`);
-  //   }
-  // };
-
   return (
     <KeyboardAvoidingView style={styles.containerView} behavior='padding'>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>

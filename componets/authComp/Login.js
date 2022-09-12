@@ -1,15 +1,11 @@
 import React from 'react';
 import {
-  Alert,
-  Image,
   Keyboard,
   KeyboardAvoidingView,
   Text,
   TextInput,
   TouchableWithoutFeedback,
-  Pressable,
   View,
-  StyleSheet,
   TouchableOpacity,
 } from 'react-native';
 import styles from './styles';
@@ -37,17 +33,6 @@ export default function Login() {
                 Login
               </Text>
             </TouchableOpacity>
-            {/* <Button
-              buttonStyle={styles.loginButton}
-              onPress={() => onLoginPress()}
-              title='Login'
-            />
-            <Button
-              containerStyle={styles.fbLoginButton}
-              type='clear'
-              onPress={() => onFbLoginPress()}
-              title='Login With Facebook'
-            /> */}
           </View>
         </View>
       </TouchableWithoutFeedback>
