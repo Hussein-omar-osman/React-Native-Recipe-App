@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import styles from './styles';
 
-export default function Login() {
+export default function Login({ setPage }) {
   return (
     <KeyboardAvoidingView style={styles.containerView} behavior='padding'>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -33,6 +33,18 @@ export default function Login() {
                 Login
               </Text>
             </TouchableOpacity>
+            <View
+              style={{
+                flexDirection: 'row',
+                marginHorizontal: 80,
+                marginVertical: 15,
+              }}
+            >
+              <Text style={{ fontSize: 15 }}>Need An Account? {` `}</Text>
+              <TouchableOpacity onPress={() => setPage('register')}>
+                <Text style={{ color: 'blue', fontSize: 15 }}>Signup</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
       </TouchableWithoutFeedback>
