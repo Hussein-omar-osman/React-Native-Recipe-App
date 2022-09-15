@@ -9,6 +9,7 @@ import WelcomeScreen from './Screens/Restaurant/WelcomeScreen';
 import HomeStack from './navigation/homeStack';
 import BottomTabsNavigation from './navigation/BottomTabsNavigation';
 import CategoryScreen from './Screens/Restaurant/CategoryScreen';
+import BottomSheetProvider from './context/BottomSheetContext';
 
 const Stack = createNativeStackNavigator();
 
@@ -16,7 +17,9 @@ const App = () => {
   return (
     <NavigationContainer>
       {/* <HomeStack /> */}
-      <BottomTabsNavigation />
+      <BottomSheetProvider>
+        <BottomTabsNavigation />
+      </BottomSheetProvider>
     </NavigationContainer>
   );
 };
