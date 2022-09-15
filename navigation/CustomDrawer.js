@@ -2,11 +2,13 @@ import {
   DrawerContentScrollView,
   DrawerItemList,
 } from '@react-navigation/drawer';
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
+import { BottomSheetContext } from '../context/BottomSheetContext';
 
 const CustomDrawer = (props) => {
+  const { setIsOpen } = useContext(BottomSheetContext);
   return (
     <View style={{ flex: 1 }}>
       <DrawerContentScrollView
@@ -39,7 +41,10 @@ const CustomDrawer = (props) => {
       <View style={{ padding: 10, borderTopWidth: 1, borderColor: '#ccc' }}>
         <TouchableOpacity
           style={{ paddingVertical: 15 }}
-          onPress={() => props.navigation.closeDrawer()}
+          onPress={() => {
+            props.navigation.closeDrawer();
+            setIsOpen(true);
+          }}
         >
           <View
             style={{

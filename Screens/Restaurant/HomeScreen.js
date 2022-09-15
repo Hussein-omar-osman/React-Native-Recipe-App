@@ -53,10 +53,10 @@ const HomeScreen = () => {
                     fontSize: SPACING * 1.7,
                     fontWeight: '800',
                     color: colors.dark,
-                    opacity: isOpen ? 0.5 : 1,
+                    opacity: isOpen ? 0.3 : 1,
                   }}
                 >
-                  unKnown
+                  login
                 </Text>
               </View>
             </TouchableOpacity>
@@ -72,7 +72,10 @@ const HomeScreen = () => {
                 />
               </TouchableOpacity>
               <TouchableOpacity
-                onPress={() => navigation.openDrawer()}
+                onPress={() => {
+                  setIsOpen(false);
+                  navigation.openDrawer();
+                }}
                 activeOpacity={0.7}
                 style={{ opacity: isOpen ? 0.3 : 1 }}
               >
@@ -157,6 +160,7 @@ const HomeScreen = () => {
                       fontSize: SPACING * 1.5,
                       color: colors.gray,
                       marginVertical: SPACING / 2,
+                      opacity: isOpen ? 0.3 : 1,
                     }}
                   >
                     {item.area} - {item.category}
