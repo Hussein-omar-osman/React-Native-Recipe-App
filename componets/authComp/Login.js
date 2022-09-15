@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Keyboard,
   KeyboardAvoidingView,
@@ -11,6 +11,8 @@ import {
 import styles from './styles';
 
 export default function Login({ setPage }) {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   return (
     <KeyboardAvoidingView style={styles.containerView} behavior='padding'>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>

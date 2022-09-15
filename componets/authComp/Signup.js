@@ -11,6 +11,10 @@ import {
 import styles from './styles';
 
 export default function Signup({ setPage }) {
+  const [userName, setUserName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [ConPassword, setConPassword] = useState('');
   return (
     <KeyboardAvoidingView style={styles.containerView} behavior='padding'>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
