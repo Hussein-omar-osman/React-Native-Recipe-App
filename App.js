@@ -10,6 +10,7 @@ import HomeStack from './navigation/homeStack';
 import BottomTabsNavigation from './navigation/BottomTabsNavigation';
 import CategoryScreen from './Screens/Restaurant/CategoryScreen';
 import BottomSheetProvider from './context/BottomSheetContext';
+import { StatusBar } from 'expo-status-bar';
 
 const Stack = createNativeStackNavigator();
 
@@ -20,11 +21,9 @@ const App = () => {
       <BottomSheetProvider>
         <BottomTabsNavigation />
       </BottomSheetProvider>
+      <StatusBar />
     </NavigationContainer>
   );
 };
 
 export default App;
-{
-  /* <RecipeDetailScreen recipe={recipes[0]} />; */
-}

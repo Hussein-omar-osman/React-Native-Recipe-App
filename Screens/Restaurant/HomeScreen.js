@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   View,
   Dimensions,
+  Platform,
 } from 'react-native';
 import React, { useState, useContext } from 'react';
 import { Ionicons } from '@expo/vector-icons';
@@ -28,7 +29,7 @@ const HomeScreen = () => {
 
   return (
     <View style={{ backgroundColor: isOpen ? '#ccc' : 'white' }}>
-      <SafeAreaView style={{ marginTop: 15 }}>
+      <SafeAreaView style={{ marginTop: Platform.OS === 'android' ? 20 : 0 }}>
         <View style={{ padding: SPACING * 2 }}>
           <View
             style={{ flexDirection: 'row', justifyContent: 'space-between' }}

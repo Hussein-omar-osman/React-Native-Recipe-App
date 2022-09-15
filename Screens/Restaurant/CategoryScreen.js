@@ -15,6 +15,7 @@ const CategoryScreen = () => {
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
+            marginTop: Platform.OS === 'android' ? 20 : 0,
           }}
         >
           <View style={{ marginBottom: 20 }}>
