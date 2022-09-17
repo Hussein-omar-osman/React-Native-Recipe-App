@@ -11,6 +11,8 @@ import {
 } from 'react-native';
 import styles from './styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { authentication } from '../../firebase/firebaseConfig';
+// import { getAuth } from 'firebase/auth';
 
 export default function Signup({ setPage }) {
   // const [userName, setUserName] = useState('');
@@ -24,6 +26,10 @@ export default function Signup({ setPage }) {
   const icon2 = !visible2 ? 'eye-slash' : 'eye';
 
   const handleSignUp = () => {
+    if (email == '' || password == '' || conPassword == '') {
+      setError('Fill all the inputs');
+      return;
+    }
     if (password !== conPassword) {
       setError("Password & Re-password don't match");
       return;
@@ -98,8 +104,12 @@ export default function Signup({ setPage }) {
                 style={{ backgroundColor: '#fff', padding: 7 }}
               />
             </View>
-
-            <TouchableOpacity style={styles.loginButton}>
+            {error && (
+              <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+                <Text style={{ color: 'red', fontSize: 16 }}>{error}</Text>
+              </View>
+            )}
+            <TouchableOpacity style={styles.loginButton} onPress={handleSignUp}>
               <Text style={{ color: '#fff', fontSize: 20, fontWeight: '700' }}>
                 Register
               </Text>

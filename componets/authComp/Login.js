@@ -63,6 +63,7 @@ export default function Login({ setPage }) {
                   setVisibility((prev) => !prev);
                   Vibration.vibrate(100);
                 }}
+                style={{ backgroundColor: '#fff', padding: 7 }}
               />
             </View>
             <TouchableOpacity style={styles.loginButton} onPress={onSubmit}>
