@@ -6,9 +6,11 @@ import React, { useContext } from 'react';
 import { View, Text, Image, TouchableOpacity, Share } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
 import { BottomSheetContext } from '../context/BottomSheetContext';
+import { useNavigation } from '@react-navigation/native';
 
 const CustomDrawer = (props) => {
   const { setIsOpen } = useContext(BottomSheetContext);
+  const navigation = useNavigation();
   const onShare = async () => {
     try {
       const result = await Share.share({
@@ -86,7 +88,11 @@ const CustomDrawer = (props) => {
         </TouchableOpacity>
         <TouchableOpacity
           style={{ paddingVertical: 15 }}
-          onPress={() => props.navigation.closeDrawer()}
+          onPress={() => {
+            props.navigation.closeDrawer();
+            setIsOpen(true);
+            navigation.navigate('Home');
+          }}
         >
           <View
             style={{

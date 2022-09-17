@@ -11,11 +11,13 @@ import {
 } from 'react-native';
 import styles from './styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { authentication } from '../../firebase/firebaseConfig';
-// import { getAuth } from 'firebase/auth';
+// import { authentication } from '../../firebase/firebaseConfig';
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { app } from '../../firebase/firebaseConfig';
 
 export default function Signup({ setPage }) {
-  // const [userName, setUserName] = useState('');
+  const [userName, setUserName] = useState('');
+  const auth = getAuth(app);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [conPassword, setConPassword] = useState('');
@@ -35,6 +37,22 @@ export default function Signup({ setPage }) {
       return;
     }
     console.log('Success the password match');
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log(userCredential);
+        console.log(user);
+        setError('');
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(error);
+        setError(error.message);
+        // ..
+      });
   };
 
   return (
@@ -46,7 +64,11 @@ export default function Signup({ setPage }) {
             <TextInput
               placeholder='Email'
               placeholderColor='#c4c3cb'
-              style={styles.loginFormTextInput}
+              autoCapitalize='none'
+              style={[
+                styles.loginFormTextInput,
+                { textTransform: 'lowercase' },
+              ]}
               value={email}
               onChangeText={(text) => setEmail(text)}
             />

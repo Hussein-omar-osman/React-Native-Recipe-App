@@ -5,14 +5,29 @@ import { BottomSheetContext } from '../context/BottomSheetContext';
 import { AntDesign } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
+import { getAuth, signOut } from 'firebase/auth';
+import { app } from '../firebase/firebaseConfig';
+
 const BottomSheetComp = () => {
   // hooks
   const { isOpen, setIsOpen } = useContext(BottomSheetContext);
   const sheetRef = useRef(null);
-  // const [isOpen, setIsOpen] = useState(false);
+  const auth = getAuth(app);
 
   // variables
   const snapPoints = ['50%'];
+
+  const logOut = () => {
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+        console.log('Logout success');
+      })
+      .catch((error) => {
+        // An error happened.
+        console.log(error);
+      });
+  };
 
   // callbacks
   const handleSheetChange = useCallback((index) => {
@@ -36,8 +51,15 @@ const BottomSheetComp = () => {
         enablePanDownToClose={true}
         onClose={() => setIsOpen(false)}
       >
-        <BottomSheetView style={{ backgroundColor: '#fff', flex: 1 }}>
-          <Text>Awesome 🔥</Text>
+        <BottomSheetView
+          style={{
+            backgroundColor: '#fff',
+
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          {/* <Text>Awesome 🔥</Text> */}
 
           <View style={{ position: 'absolute', top: 5, right: 7 }}>
             <TouchableOpacity onPress={() => setIsOpen(false)}>
@@ -45,6 +67,19 @@ const BottomSheetComp = () => {
                 <AntDesign name='close' size={17} color='black' />
               </Text>
             </TouchableOpacity>
+          </View>
+          <View>
+            <Text>Are you sure you want to signout</Text>
+            <View style={{ flexDirection: 'row' }}>
+              <Button title='Cancel' onPress={() => setIsOpen(false)} />
+              <Button
+                title='Ok'
+                onPress={() => {
+                  setIsOpen(false);
+                  logOut();
+                }}
+              />
+            </View>
           </View>
         </BottomSheetView>
       </BottomSheet>

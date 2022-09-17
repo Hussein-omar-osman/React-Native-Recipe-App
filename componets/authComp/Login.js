@@ -12,19 +12,40 @@ import {
 } from 'react-native';
 import styles from './styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { app } from '../../firebase/firebaseConfig';
 
 export default function Login({ setPage }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [visible, setVisibility] = useState(true);
+  const [error, setError] = useState('');
+  const auth = getAuth(app);
+
   const icon = !visible ? 'eye-slash' : 'eye';
 
   const onSubmit = () => {
     if (email == '' || password == '') {
-      Alert.alert('Missing Data', 'Provide all the required Data for login');
+      setError('Provide all the required Credentials to login');
       return;
     }
-    Alert.alert('Credentials', `Email: ${email}/n Password: ${password}`);
+
+    setError('');
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log(user);
+        setError('');
+        Alert.alert('Success', `Email: ${email} successful login`);
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        setError(error.message);
+        console.log(error);
+      });
   };
 
   return (
@@ -36,6 +57,7 @@ export default function Login({ setPage }) {
             <TextInput
               placeholder='Email'
               placeholderColor='#c4c3cb'
+              autoCapitalize='none'
               style={styles.loginFormTextInput}
               value={email}
               onChangeText={(text) => setEmail(text)}
@@ -50,6 +72,7 @@ export default function Login({ setPage }) {
               <TextInput
                 placeholder='Password'
                 placeholderColor='#c4c3cb'
+                autoCapitalize='none'
                 style={[styles.loginFormTextInput, { flex: 2 }]}
                 secureTextEntry={visible}
                 value={password}
@@ -66,6 +89,11 @@ export default function Login({ setPage }) {
                 style={{ backgroundColor: '#fff', padding: 7 }}
               />
             </View>
+            {error && (
+              <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+                <Text style={{ color: 'red', fontSize: 16 }}>{error}</Text>
+              </View>
+            )}
             <TouchableOpacity style={styles.loginButton} onPress={onSubmit}>
               <Text style={{ color: '#fff', fontSize: 20, fontWeight: '700' }}>
                 Login
