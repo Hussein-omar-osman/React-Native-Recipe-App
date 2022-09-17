@@ -8,11 +8,16 @@ import {
   View,
   TouchableOpacity,
   Vibration,
+  Alert,
 } from 'react-native';
 import styles from './styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
 // import { authentication } from '../../firebase/firebaseConfig';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+} from 'firebase/auth';
 import { app } from '../../firebase/firebaseConfig';
 
 export default function Signup({ setPage }) {
@@ -41,7 +46,7 @@ export default function Signup({ setPage }) {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        console.log(userCredential);
+        // console.log(userCredential);
         console.log(user);
         setError('');
         // ...
