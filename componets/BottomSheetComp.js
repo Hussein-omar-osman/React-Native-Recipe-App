@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useContext, useState } from 'react';
+import React, { useCallback, useRef, useContext } from 'react';
 import { StyleSheet, View, Text, Button, Platform } from 'react-native';
 import BottomSheet, { BottomSheetView } from '@gorhom/bottom-sheet';
 import { BottomSheetContext } from '../context/BottomSheetContext';
@@ -7,14 +7,15 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 
 import { getAuth, signOut } from 'firebase/auth';
 import { app } from '../firebase/firebaseConfig';
-import { UserContext } from '../context/UserContext';
+import { UserContext } from '../App';
 
 const BottomSheetComp = () => {
   // hooks
   const { isOpen, setIsOpen } = useContext(BottomSheetContext);
-  const { setUser } = useContext(UserContext);
+  // const { setUser } = useContext(UserContext);
   const sheetRef = useRef(null);
   const auth = getAuth(app);
+  const { removeData, setFirstLogin, setUser } = useContext(UserContext);
 
   // variables
   const snapPoints = ['50%'];
@@ -24,7 +25,6 @@ const BottomSheetComp = () => {
       .then(() => {
         // Sign-out successful.
         console.log('Logout success');
-        setUser({});
       })
       .catch((error) => {
         // An error happened.
@@ -78,7 +78,10 @@ const BottomSheetComp = () => {
               <Button
                 title='Ok'
                 onPress={() => {
+                  removeData();
+                  setFirstLogin((prev) => !prev);
                   setIsOpen(false);
+                  setUser(null);
                   logOut();
                 }}
               />

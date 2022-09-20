@@ -11,6 +11,7 @@ import { useNavigation } from '@react-navigation/native';
 const CustomDrawer = (props) => {
   const { setIsOpen } = useContext(BottomSheetContext);
   const navigation = useNavigation();
+
   const onShare = async () => {
     try {
       const result = await Share.share({

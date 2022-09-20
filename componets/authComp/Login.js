@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {
   Keyboard,
   KeyboardAvoidingView,
@@ -14,12 +14,16 @@ import styles from './styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { app } from '../../firebase/firebaseConfig';
+import { useNavigation } from '@react-navigation/native';
+import { UserContext } from '../../App';
 
 export default function Login({ setPage }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [visible, setVisibility] = useState(true);
   const [error, setError] = useState('');
+  const { storeData } = useContext(UserContext);
+  const navigation = useNavigation();
   const auth = getAuth(app);
 
   const icon = !visible ? 'eye-slash' : 'eye';
@@ -35,9 +39,12 @@ export default function Login({ setPage }) {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        console.log(user);
-        setError('');
+        // console.log(user);
         Alert.alert('Success', `Email: ${email} successful login`);
+        storeData(userCredential);
+        console.log(userCredential);
+        navigation.navigate('Home');
+
         // ...
       })
       .catch((error) => {

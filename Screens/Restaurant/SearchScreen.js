@@ -9,7 +9,7 @@ import {
 import SPACING from '../../config/SPACING';
 import colors from '../../config/Restaurant/colors';
 import { Ionicons } from '@expo/vector-icons';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import ResultsFound from '../../componets/ResultsFound';
 
 const SearchScreen = () => {
@@ -17,6 +17,10 @@ const SearchScreen = () => {
   const [result, setResult] = useState([]);
   const [showIll, setShowIll] = useState(true);
   const [show, setShow] = useState(false);
+  // const { user } = useContext(UserContext);
+  // console.log(user);
+  // console.log(user?._W + ' 1');
+  // console.log(user?._W?.operationType);
 
   const searchData = async () => {
     console.log(search);

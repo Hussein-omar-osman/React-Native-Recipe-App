@@ -6,9 +6,12 @@ import HomeStack from './homeStack';
 import SearchStack from './searchStack';
 import CategoryStack from './categoryStack';
 import CountryStack from './countryStack';
+import { useContext } from 'react';
 const Tab = createBottomTabNavigator();
 
 function BottomTabsNavigation() {
+  // const { user } = useContext(UserContext);
+  // console.log(user);
   return (
     <Tab.Navigator
       screenOptions={{

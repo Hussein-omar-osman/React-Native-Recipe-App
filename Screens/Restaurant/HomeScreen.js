@@ -18,6 +18,7 @@ import { useNavigation } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { BottomSheetContext } from '../../context/BottomSheetContext';
 import BottomSheetComp from '../../componets/BottomSheetComp';
+import { UserContext } from '../../App';
 const { width } = Dimensions.get('window');
 
 const ITEM_WIDTH = width / 2 - SPACING * 3;
@@ -26,6 +27,9 @@ const HomeScreen = () => {
   const [activeCategory, setActiveCategory] = useState(0);
   const navigation = useNavigation();
   const { isOpen, setIsOpen } = useContext(BottomSheetContext);
+  const { user } = useContext(UserContext);
+  console.log(user);
+  console.log(user?._tokenResponse?.email);
 
   return (
     <View style={{ backgroundColor: isOpen ? '#ccc' : 'white' }}>
@@ -57,7 +61,7 @@ const HomeScreen = () => {
                     opacity: isOpen ? 0.3 : 1,
                   }}
                 >
-                  login
+                  {user == null ? 'login' : user?._tokenResponse?.email}
                 </Text>
               </View>
             </TouchableOpacity>
