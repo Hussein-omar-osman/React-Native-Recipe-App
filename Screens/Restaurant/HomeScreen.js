@@ -18,7 +18,7 @@ import { useNavigation } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { BottomSheetContext } from '../../context/BottomSheetContext';
 import BottomSheetComp from '../../componets/BottomSheetComp';
-import { UserContext } from '../../App';
+import { UserContext } from '../../context/UserContext';
 const { width } = Dimensions.get('window');
 
 const ITEM_WIDTH = width / 2 - SPACING * 3;

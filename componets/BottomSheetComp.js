@@ -7,12 +7,11 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 
 import { getAuth, signOut } from 'firebase/auth';
 import { app } from '../firebase/firebaseConfig';
-import { UserContext } from '../App';
+import { UserContext } from '../context/UserContext';
 
 const BottomSheetComp = () => {
   // hooks
   const { isOpen, setIsOpen } = useContext(BottomSheetContext);
-  // const { setUser } = useContext(UserContext);
   const sheetRef = useRef(null);
   const auth = getAuth(app);
   const { removeData, setFirstLogin, setUser } = useContext(UserContext);

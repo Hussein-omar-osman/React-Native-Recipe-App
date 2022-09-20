@@ -15,7 +15,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { app } from '../../firebase/firebaseConfig';
 import { useNavigation } from '@react-navigation/native';
-import { UserContext } from '../../App';
+import { UserContext } from '../../context/UserContext';
 
 export default function Login({ setPage }) {
   const [email, setEmail] = useState('');
