@@ -14,7 +14,13 @@ const BottomSheetComp = () => {
   const { isOpen, setIsOpen } = useContext(BottomSheetContext);
   const sheetRef = useRef(null);
   const auth = getAuth(app);
-  const { removeData, setFirstLogin, setUser } = useContext(UserContext);
+  const {
+    removeData,
+    setFirstLogin,
+    setUser,
+    expoPushToken,
+    sendPushNotification,
+  } = useContext(UserContext);
 
   // variables
   const snapPoints = ['50%'];
@@ -24,6 +30,7 @@ const BottomSheetComp = () => {
       .then(() => {
         // Sign-out successful.
         console.log('Logout success');
+        sendPushNotification(expoPushToken, `Sign out was successfull`);
       })
       .catch((error) => {
         // An error happened.

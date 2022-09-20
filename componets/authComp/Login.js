@@ -22,7 +22,8 @@ export default function Login({ setPage }) {
   const [password, setPassword] = useState('');
   const [visible, setVisibility] = useState(true);
   const [error, setError] = useState('');
-  const { storeData } = useContext(UserContext);
+  const { storeData, expoPushToken, sendPushNotification } =
+    useContext(UserContext);
   const navigation = useNavigation();
   const auth = getAuth(app);
 
@@ -46,6 +47,7 @@ export default function Login({ setPage }) {
           index: 0,
           routes: [{ name: 'Home' }],
         });
+        sendPushNotification(expoPushToken, `${email} Login was successfull`);
 
         // ...
       })

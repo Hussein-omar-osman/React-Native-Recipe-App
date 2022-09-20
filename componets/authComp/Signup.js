@@ -33,7 +33,8 @@ export default function Signup({ setPage }) {
   const [visible2, setVisibility2] = useState(true);
   const icon1 = !visible1 ? 'eye-slash' : 'eye';
   const icon2 = !visible2 ? 'eye-slash' : 'eye';
-  const { storeData } = useContext(UserContext);
+  const { storeData, expoPushToken, sendPushNotification } =
+    useContext(UserContext);
   const navigation = useNavigation();
 
   const handleSignUp = () => {
@@ -57,6 +58,7 @@ export default function Signup({ setPage }) {
           index: 0,
           routes: [{ name: 'Home' }],
         });
+        sendPushNotification(expoPushToken, `${email} Sign up was successfull`);
         // ...
       })
       .catch((error) => {

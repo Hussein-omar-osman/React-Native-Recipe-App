@@ -27,7 +27,7 @@ const HomeScreen = () => {
   const [activeCategory, setActiveCategory] = useState(0);
   const navigation = useNavigation();
   const { isOpen, setIsOpen } = useContext(BottomSheetContext);
-  const { user } = useContext(UserContext);
+  const { user, expoPushToken, sendPushNotification } = useContext(UserContext);
   console.log(user);
   console.log(user?._tokenResponse?.email);
 
@@ -68,7 +68,13 @@ const HomeScreen = () => {
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
               <TouchableOpacity
                 style={{ marginRight: SPACING, opacity: isOpen ? 0.3 : 1 }}
-                onPress={() => setIsOpen((prev) => !prev)}
+                onPress={async () => {
+                  await sendPushNotification(
+                    expoPushToken,
+
+                    'This is a trial push notification'
+                  );
+                }}
               >
                 <Ionicons
                   name='notifications-outline'
