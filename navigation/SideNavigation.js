@@ -1,14 +1,15 @@
+import { useContext } from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import AuthPage from '../Screens/Restaurant/AuthPage';
 import HomeScreen from '../Screens/Restaurant/HomeScreen';
 import CustomDrawer from './CustomDrawer';
 import { Ionicons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
-import { useContext } from 'react';
+import { UserContext } from '../context/UserContext';
 const Drawer = createDrawerNavigator();
 
 export default function SideNavigation() {
-  // const { user } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   return (
     <Drawer.Navigator
       screenOptions={{
@@ -29,19 +30,9 @@ export default function SideNavigation() {
           ),
         }}
       />
-      {/* {user == null ? (
+      {user == null ? (
         <Drawer.Screen
-          name='HomeCopy'
-          component={HomeScreen}
-          options={{
-            drawerIcon: ({ color, size }) => (
-              <Ionicons name='md-home-sharp' size={size} color={color} />
-            ),
-          }}
-        />
-      ) : (
-        <Drawer.Screen
-          name='AuthCopy'
+          name='Login'
           component={AuthPage}
           options={{
             drawerIcon: ({ color, size }) => (
@@ -49,17 +40,17 @@ export default function SideNavigation() {
             ),
           }}
         />
-      )} */}
-
-      <Drawer.Screen
-        name='Auth'
-        component={AuthPage}
-        options={{
-          drawerIcon: ({ color, size }) => (
-            <Entypo name='login' size={size} color={color} />
-          ),
-        }}
-      />
+      ) : (
+        <Drawer.Screen
+          name='Profile'
+          component={HomeScreen}
+          options={{
+            drawerIcon: ({ color, size }) => (
+              <Ionicons name='md-home-sharp' size={size} color={color} />
+            ),
+          }}
+        />
+      )}
     </Drawer.Navigator>
   );
 }

@@ -7,10 +7,12 @@ import { View, Text, Image, TouchableOpacity, Share } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
 import { BottomSheetContext } from '../context/BottomSheetContext';
 import { useNavigation } from '@react-navigation/native';
+import { UserContext } from '../context/UserContext';
 
 const CustomDrawer = (props) => {
   const { setIsOpen } = useContext(BottomSheetContext);
   const navigation = useNavigation();
+  const { user } = useContext(UserContext);
 
   const onShare = async () => {
     try {
@@ -38,23 +40,53 @@ const CustomDrawer = (props) => {
         contentContainerStyle={{ backgroundColor: 'tomato' }}
       >
         <View style={{ padding: 20 }}>
-          <Image
-            source={require('../assets/unknow.png')}
-            style={{
-              marginBottom: 10,
-              width: 80,
-              height: 80,
-              borderRadius: 40,
-            }}
-          />
-          <Text
-            style={{
-              color: 'white',
-              fontSize: 18,
-            }}
-          >
-            @unKnown
-          </Text>
+          {user == null ? (
+            <TouchableOpacity
+              style={{ padding: 40 }}
+              onPress={() => navigation.navigate('Login')}
+            >
+              <View
+                style={{
+                  backgroundColor: '#fff',
+                  paddingVertical: 8,
+
+                  borderRadius: 5,
+                }}
+              >
+                <Text
+                  style={{
+                    color: '#000',
+                    fontSize: 16,
+                    textTransform: 'uppercase',
+                    textAlign: 'center',
+                  }}
+                >
+                  {' '}
+                  LOGIN
+                </Text>
+              </View>
+            </TouchableOpacity>
+          ) : (
+            <View>
+              <Image
+                source={require('../assets/unknow.png')}
+                style={{
+                  marginBottom: 10,
+                  width: 80,
+                  height: 80,
+                  borderRadius: 40,
+                }}
+              />
+              <Text
+                style={{
+                  color: 'white',
+                  fontSize: 18,
+                }}
+              >
+                @{user?._tokenResponse?.email}
+              </Text>
+            </View>
+          )}
         </View>
         <View style={{ backgroundColor: '#fff', flex: 1, paddingTop: 20 }}>
           <DrawerItemList {...props} />
@@ -87,33 +119,35 @@ const CustomDrawer = (props) => {
             </Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity
-          style={{ paddingVertical: 15 }}
-          onPress={() => {
-            props.navigation.closeDrawer();
-            setIsOpen(true);
-            navigation.navigate('Home');
-          }}
-        >
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
+        {user != null && (
+          <TouchableOpacity
+            style={{ paddingVertical: 15 }}
+            onPress={() => {
+              props.navigation.closeDrawer();
+              setIsOpen(true);
+              navigation.navigate('Home');
             }}
           >
-            <Entypo name='log-out' size={22} color='black' />
-            <Text
+            <View
               style={{
-                color: '#333',
-                fontSize: 15,
-                marginLeft: 5,
-                fontWeight: 'bold',
+                flexDirection: 'row',
+                alignItems: 'center',
               }}
             >
-              Sign out
-            </Text>
-          </View>
-        </TouchableOpacity>
+              <Entypo name='log-out' size={22} color='black' />
+              <Text
+                style={{
+                  color: '#333',
+                  fontSize: 15,
+                  marginLeft: 5,
+                  fontWeight: 'bold',
+                }}
+              >
+                Sign out
+              </Text>
+            </View>
+          </TouchableOpacity>
+        )}
       </View>
     </View>
   );

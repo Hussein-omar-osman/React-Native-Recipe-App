@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {
   Keyboard,
   KeyboardAvoidingView,
@@ -19,6 +19,8 @@ import {
   sendEmailVerification,
 } from 'firebase/auth';
 import { app } from '../../firebase/firebaseConfig';
+import { UserContext } from '../../context/UserContext';
+import { useNavigation } from '@react-navigation/native';
 
 export default function Signup({ setPage }) {
   const [userName, setUserName] = useState('');
@@ -31,6 +33,8 @@ export default function Signup({ setPage }) {
   const [visible2, setVisibility2] = useState(true);
   const icon1 = !visible1 ? 'eye-slash' : 'eye';
   const icon2 = !visible2 ? 'eye-slash' : 'eye';
+  const { storeData } = useContext(UserContext);
+  const navigation = useNavigation();
 
   const handleSignUp = () => {
     if (email == '' || password == '' || conPassword == '') {
@@ -47,7 +51,9 @@ export default function Signup({ setPage }) {
         // Signed in
         const user = userCredential.user;
         // console.log(userCredential);
-        console.log(user);
+        storeData(userCredential);
+        console.log(userCredential);
+        navigation.navigate('Home');
         setError('');
         // ...
       })
