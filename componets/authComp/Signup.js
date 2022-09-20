@@ -53,8 +53,10 @@ export default function Signup({ setPage }) {
         // console.log(userCredential);
         storeData(userCredential);
         console.log(userCredential);
-        navigation.navigate('Home');
-        setError('');
+        navigation.reset({
+          index: 0,
+          routes: [{ name: 'Home' }],
+        });
         // ...
       })
       .catch((error) => {

@@ -40,10 +40,12 @@ export default function Login({ setPage }) {
         // Signed in
         const user = userCredential.user;
         // console.log(user);
-        Alert.alert('Success', `Email: ${email} successful login`);
         storeData(userCredential);
         console.log(userCredential);
-        navigation.navigate('Home');
+        navigation.reset({
+          index: 0,
+          routes: [{ name: 'Home' }],
+        });
 
         // ...
       })

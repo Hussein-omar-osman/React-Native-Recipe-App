@@ -70,10 +70,71 @@ const BottomSheetComp = () => {
               </Text>
             </TouchableOpacity>
           </View>
-          <View>
-            <Text>Are you sure you want to signout</Text>
-            <View style={{ flexDirection: 'row' }}>
-              <Button title='Cancel' onPress={() => setIsOpen(false)} />
+          <View style={{ marginTop: 50 }}>
+            <Text style={{ fontSize: 20 }}>
+              Are you sure you want to Sign out
+            </Text>
+            <View
+              style={{
+                flexDirection: 'row',
+                marginTop: 20,
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <TouchableOpacity onPress={() => setIsOpen(false)}>
+                <View
+                  style={{
+                    backgroundColor: '#ccc',
+                    padding: 10,
+                    marginRight: 30,
+                    borderRadius: 5,
+                  }}
+                >
+                  <Text
+                    style={{
+                      color: '#000',
+                      fontSize: 16,
+                      textTransform: 'uppercase',
+                      textAlign: 'center',
+                    }}
+                  >
+                    {' '}
+                    CANCEL
+                  </Text>
+                </View>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => {
+                  removeData();
+                  setFirstLogin((prev) => !prev);
+                  setIsOpen(false);
+                  setUser(null);
+                  logOut();
+                }}
+              >
+                <View
+                  style={{
+                    backgroundColor: 'tomato',
+                    padding: 10,
+
+                    borderRadius: 5,
+                  }}
+                >
+                  <Text
+                    style={{
+                      color: '#fff',
+                      fontSize: 16,
+                      textTransform: 'uppercase',
+                      textAlign: 'center',
+                    }}
+                  >
+                    {' '}
+                    OK
+                  </Text>
+                </View>
+              </TouchableOpacity>
+              {/* <Button title='Cancel' onPress={() => setIsOpen(false)} />
               <Button
                 title='Ok'
                 onPress={() => {
@@ -83,7 +144,7 @@ const BottomSheetComp = () => {
                   setUser(null);
                   logOut();
                 }}
-              />
+              /> */}
             </View>
           </View>
         </BottomSheetView>

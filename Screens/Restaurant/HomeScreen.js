@@ -61,7 +61,7 @@ const HomeScreen = () => {
                     opacity: isOpen ? 0.3 : 1,
                   }}
                 >
-                  {user == null ? 'login' : user?._tokenResponse?.email}
+                  {user == null ? 'Login' : user?._tokenResponse?.email}
                 </Text>
               </View>
             </TouchableOpacity>
