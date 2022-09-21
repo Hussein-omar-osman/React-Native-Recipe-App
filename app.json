@@ -5,7 +5,7 @@
     "description": "This is a recipe app that can help users get recipe of different meals and a YouTube video suggestion",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/receta-icon.png",
+    "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/firstScreen.png",

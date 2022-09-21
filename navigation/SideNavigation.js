@@ -5,7 +5,9 @@ import HomeScreen from '../Screens/Restaurant/HomeScreen';
 import CustomDrawer from './CustomDrawer';
 import { Ionicons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { UserContext } from '../context/UserContext';
+import Profile from '../Screens/Restaurant/Profile';
 const Drawer = createDrawerNavigator();
 
 export default function SideNavigation() {
@@ -43,10 +45,14 @@ export default function SideNavigation() {
       ) : (
         <Drawer.Screen
           name='Profile'
-          component={HomeScreen}
+          component={Profile}
           options={{
             drawerIcon: ({ color, size }) => (
-              <Ionicons name='md-home-sharp' size={size} color={color} />
+              <MaterialCommunityIcons
+                name='account'
+                size={size}
+                color={color}
+              />
             ),
           }}
         />
