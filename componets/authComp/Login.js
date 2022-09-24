@@ -36,7 +36,7 @@ export default function Login({ setPage }) {
     }
 
     setError('');
-    signInWithEmailAndPassword(auth, email, password)
+    signInWithEmailAndPassword(auth, email.trim(), password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;

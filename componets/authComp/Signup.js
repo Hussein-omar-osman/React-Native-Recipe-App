@@ -47,7 +47,7 @@ export default function Signup({ setPage }) {
       return;
     }
     console.log('Success the password match');
-    createUserWithEmailAndPassword(auth, email, password)
+    createUserWithEmailAndPassword(auth, email.trim(), password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;

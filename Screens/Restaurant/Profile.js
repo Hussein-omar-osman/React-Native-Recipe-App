@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   View,
   SafeAreaView,
   StyleSheet,
   Share,
   TouchableOpacity,
+  Platform,
 } from 'react-native';
 import {
   Avatar,
@@ -16,8 +17,12 @@ import {
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon2 from 'react-native-vector-icons/AntDesign';
+import { useNavigation } from '@react-navigation/native';
+import { UserContext } from '../../context/UserContext';
 
 const ProfileScreen = () => {
+  const navigation = useNavigation();
+  const { user } = useContext(UserContext);
   const onShare = async () => {
     try {
       const result = await Share.share({
@@ -39,15 +44,15 @@ const ProfileScreen = () => {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView
+      style={[
+        styles.container,
+        { marginTop: Platform.OS === 'android' ? 45 : 0 },
+      ]}
+    >
       <View style={styles.userInfoSection}>
         <View style={{ flexDirection: 'row', marginTop: 15 }}>
-          <Avatar.Image
-            source={{
-              uri: 'https://api.adorable.io/avatars/80/abott@adorable.png',
-            }}
-            size={80}
-          />
+          <Avatar.Image source={require('../../assets/unknow.png')} size={80} />
           <View style={{ marginLeft: 20 }}>
             <Title
               style={[
@@ -58,30 +63,32 @@ const ProfileScreen = () => {
                 },
               ]}
             >
-              John Doe
+              unKnown
             </Title>
             <Caption style={styles.caption}>@j_doe</Caption>
           </View>
         </View>
+        <TouchableOpacity
+          style={{ position: 'absolute', top: 30, right: 20 }}
+          onPress={() => navigation.openDrawer()}
+        >
+          <Icon name='menu' color='#000' size={35} />
+        </TouchableOpacity>
       </View>
 
       <View style={[styles.userInfoSection, { marginBottom: -10 }]}>
         <View style={styles.row}>
           <Icon name='map-marker-radius' color='#777777' size={20} />
-          <Text style={{ color: '#777777', marginLeft: 20 }}>
-            Kolkata, India
-          </Text>
+          <Text style={{ color: '#777777', marginLeft: 20 }}>-, -</Text>
         </View>
         <View style={styles.row}>
           <Icon name='phone' color='#777777' size={20} />
-          <Text style={{ color: '#777777', marginLeft: 20 }}>
-            +91-900000009
-          </Text>
+          <Text style={{ color: '#777777', marginLeft: 20 }}>+01-*******</Text>
         </View>
         <View style={styles.row}>
           <Icon name='email' color='#777777' size={20} />
           <Text style={{ color: '#777777', marginLeft: 20 }}>
-            john_doe@email.com
+            {user?._tokenResponse?.email}
           </Text>
         </View>
       </View>
