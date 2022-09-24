@@ -13,6 +13,11 @@ const CustomDrawer = (props) => {
   const { setIsOpen } = useContext(BottomSheetContext);
   const navigation = useNavigation();
   const { user } = useContext(UserContext);
+  const trncate = (string) => {
+    let index = string.indexOf('@');
+    let newString = string.substring(0, index);
+    return newString;
+  };
 
   const onShare = async () => {
     try {
@@ -83,7 +88,7 @@ const CustomDrawer = (props) => {
                   fontSize: 18,
                 }}
               >
-                @{user?._tokenResponse?.email}
+                @{trncate(user?._tokenResponse?.email)}
               </Text>
             </View>
           )}

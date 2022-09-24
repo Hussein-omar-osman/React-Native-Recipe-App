@@ -23,6 +23,11 @@ import { UserContext } from '../../context/UserContext';
 const ProfileScreen = () => {
   const navigation = useNavigation();
   const { user } = useContext(UserContext);
+  const trncate = (string) => {
+    let index = string.indexOf('@');
+    let newString = string.substring(0, index);
+    return newString;
+  };
   const onShare = async () => {
     try {
       const result = await Share.share({
@@ -60,12 +65,15 @@ const ProfileScreen = () => {
                 {
                   marginTop: 15,
                   marginBottom: 5,
+                  fontSize: 20,
                 },
               ]}
             >
-              unKnown
+              {trncate(user?._tokenResponse?.email)}
             </Title>
-            <Caption style={styles.caption}>@j_doe</Caption>
+            <Caption style={styles.caption}>
+              @{trncate(user?._tokenResponse?.email)}
+            </Caption>
           </View>
         </View>
         <TouchableOpacity

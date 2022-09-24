@@ -30,6 +30,11 @@ const HomeScreen = () => {
   const { user, expoPushToken, sendPushNotification } = useContext(UserContext);
   console.log(user);
   console.log(user?._tokenResponse?.email);
+  const trncate = (string) => {
+    let index = string.indexOf('@');
+    let newString = string.substring(0, index);
+    return newString;
+  };
 
   return (
     <View style={{ backgroundColor: isOpen ? '#ccc' : 'white' }}>
@@ -61,7 +66,9 @@ const HomeScreen = () => {
                     opacity: isOpen ? 0.3 : 1,
                   }}
                 >
-                  {user == null ? 'Login' : user?._tokenResponse?.email}
+                  {user == null
+                    ? 'Login'
+                    : trncate(user?._tokenResponse?.email)}
                 </Text>
               </View>
             </TouchableOpacity>
