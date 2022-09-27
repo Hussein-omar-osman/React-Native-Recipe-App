@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useRef } from 'react';
 import {
   View,
   SafeAreaView,
@@ -19,8 +19,9 @@ import {
   TouchableRipple,
   Button,
 } from 'react-native-paper';
+import BottomSheet, { BottomSheetView } from '@gorhom/bottom-sheet';
 import styles2 from '../../componets/authComp/styles';
-import { Entypo } from '@expo/vector-icons';
+import { Entypo, AntDesign } from '@expo/vector-icons';
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon2 from 'react-native-vector-icons/AntDesign';
@@ -29,6 +30,8 @@ import { UserContext } from '../../context/UserContext';
 
 const ProfileScreen = () => {
   const [edit, setEdit] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+
   const navigation = useNavigation();
   const { user } = useContext(UserContext);
   const trncate = (string) => {
@@ -62,14 +65,21 @@ const ProfileScreen = () => {
     <SafeAreaView
       style={[
         styles.container,
-        { marginTop: Platform.OS === 'android' ? 45 : 0 },
+        {
+          marginTop: Platform.OS === 'android' ? 45 : 0,
+          backgroundColor: isOpen ? '#ccc' : 'white',
+        },
       ]}
     >
       <View style={styles.userInfoSection}>
         <View style={{ flexDirection: 'row', marginTop: 15 }}>
-          <Avatar.Image source={require('../../assets/unknow.png')} size={80} />
+          <Avatar.Image
+            source={require('../../assets/unknow.png')}
+            size={80}
+            style={{ opacity: isOpen ? 0.3 : 1 }}
+          />
           <View style={{ position: 'absolute', top: 60, left: 60 }}>
-            <TouchableOpacity onPress={() => alert('image')}>
+            <TouchableOpacity onPress={() => setIsOpen(true)}>
               <Entypo name='circle-with-plus' size={24} color='black' />
             </TouchableOpacity>
           </View>
@@ -166,6 +176,7 @@ const ProfileScreen = () => {
           </View>
         </TouchableRipple>
       </View>
+      {isOpen && <ImageOptions setIsOpen={setIsOpen} />}
     </SafeAreaView>
   );
 };
@@ -262,6 +273,57 @@ function EditProfile({ setEdit }) {
         </View>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
+  );
+}
+
+function ImageOptions({ setIsOpen }) {
+  const sheetRef = useRef(null);
+  const snapPoints = ['30%', '50%', '70%'];
+
+  return (
+    <BottomSheet
+      ref={sheetRef}
+      snapPoints={snapPoints}
+      // onChange={handleSheetChange}
+      enablePanDownToClose={true}
+      onClose={() => setIsOpen(false)}
+    >
+      <BottomSheetView
+        style={{
+          backgroundColor: '#fff',
+
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        {/* <Text>Awesome 🔥</Text> */}
+
+        <View style={{ position: 'absolute', top: 5, right: 7 }}>
+          <TouchableOpacity onPress={() => setIsOpen(false)}>
+            <Text>
+              <AntDesign name='close' size={17} color='black' />
+            </Text>
+          </TouchableOpacity>
+        </View>
+        <View style={{ marginTop: 20 }}>
+          <Text style={{ fontSize: 20 }}>Profile image</Text>
+          <TouchableOpacity
+            style={[styles2.loginButton, { backgroundColor: 'green' }]}
+          >
+            <Text style={{ color: '#fff', fontSize: 20, fontWeight: '700' }}>
+              View Image
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles2.loginButton, { backgroundColor: 'tomato' }]}
+          >
+            <Text style={{ color: '#fff', fontSize: 20, fontWeight: '700' }}>
+              Upload Image
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </BottomSheetView>
+    </BottomSheet>
   );
 }
 
