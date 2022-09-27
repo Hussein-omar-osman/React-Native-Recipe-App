@@ -8,6 +8,7 @@ export const UserContext = createContext();
 const UserProvider = (props) => {
   const auth = getAuth(app);
   const { expoPushToken, sendPushNotification } = props;
+  const [image, setImage] = useState(null);
 
   const [user, setUser] = useState(null);
   const [firstLogin, setFirstLogin] = useState(false);
@@ -55,6 +56,8 @@ const UserProvider = (props) => {
         setFirstLogin: setFirstLogin,
         sendPushNotification: sendPushNotification,
         expoPushToken: expoPushToken,
+        image: image,
+        setImage: setImage,
       }}
     >
       {props.children}

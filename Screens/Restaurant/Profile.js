@@ -19,9 +19,11 @@ import {
   TouchableRipple,
   Button,
 } from 'react-native-paper';
+
 import BottomSheet, { BottomSheetView } from '@gorhom/bottom-sheet';
 import styles2 from '../../componets/authComp/styles';
 import { Entypo, AntDesign } from '@expo/vector-icons';
+import * as ImagePicker from 'expo-image-picker';
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon2 from 'react-native-vector-icons/AntDesign';
@@ -31,9 +33,8 @@ import { UserContext } from '../../context/UserContext';
 const ProfileScreen = () => {
   const [edit, setEdit] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-
   const navigation = useNavigation();
-  const { user } = useContext(UserContext);
+  const { user, image, setImage } = useContext(UserContext);
   const trncate = (string) => {
     let index = string.indexOf('@');
     let newString = string.substring(0, index);
@@ -59,6 +60,22 @@ const ProfileScreen = () => {
     }
   };
 
+  const pickImage = async () => {
+    // No permissions request is necessary for launching the image library
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    console.log(result);
+
+    if (!result.cancelled) {
+      setImage(result.uri);
+    }
+  };
+
   if (edit) return <EditProfile setEdit={setEdit} />;
 
   return (
@@ -80,11 +97,19 @@ const ProfileScreen = () => {
         ]}
       >
         <View style={{ flexDirection: 'row', marginTop: 15 }}>
-          <Avatar.Image
-            source={require('../../assets/unknow.png')}
-            size={80}
-            style={{ opacity: isOpen ? 0.3 : 1 }}
-          />
+          {image ? (
+            <Avatar.Image
+              source={{ uri: image }}
+              size={80}
+              style={{ opacity: isOpen ? 0.3 : 1 }}
+            />
+          ) : (
+            <Avatar.Image
+              source={require('../../assets/unknow.png')}
+              size={80}
+              style={{ opacity: isOpen ? 0.3 : 1 }}
+            />
+          )}
           <View style={{ position: 'absolute', top: 60, left: 60 }}>
             <TouchableOpacity onPress={() => setIsOpen(true)}>
               <Entypo name='circle-with-plus' size={24} color='black' />
@@ -188,7 +213,7 @@ const ProfileScreen = () => {
           </View>
         </TouchableRipple>
       </View>
-      {isOpen && <ImageOptions setIsOpen={setIsOpen} />}
+      {isOpen && <ImageOptions setIsOpen={setIsOpen} pickImage={pickImage} />}
     </SafeAreaView>
   );
 };
@@ -288,7 +313,7 @@ function EditProfile({ setEdit }) {
   );
 }
 
-function ImageOptions({ setIsOpen }) {
+function ImageOptions({ setIsOpen, pickImage }) {
   const navigation = useNavigation();
   const sheetRef = useRef(null);
   const snapPoints = ['30%', '50%', '70%'];
@@ -333,6 +358,10 @@ function ImageOptions({ setIsOpen }) {
           </TouchableOpacity>
           <TouchableOpacity
             style={[styles2.loginButton, { backgroundColor: 'tomato' }]}
+            onPress={() => {
+              pickImage();
+              setIsOpen(false);
+            }}
           >
             <Text style={{ color: '#fff', fontSize: 20, fontWeight: '700' }}>
               Upload Image

@@ -12,7 +12,7 @@ import { UserContext } from '../context/UserContext';
 const CustomDrawer = (props) => {
   const { setIsOpen } = useContext(BottomSheetContext);
   const navigation = useNavigation();
-  const { user } = useContext(UserContext);
+  const { user, image } = useContext(UserContext);
   const trncate = (string) => {
     let index = string.indexOf('@');
     let newString = string.substring(0, index);
@@ -73,15 +73,27 @@ const CustomDrawer = (props) => {
             </TouchableOpacity>
           ) : (
             <View>
-              <Image
-                source={require('../assets/unknow.png')}
-                style={{
-                  marginBottom: 10,
-                  width: 80,
-                  height: 80,
-                  borderRadius: 40,
-                }}
-              />
+              {image ? (
+                <Image
+                  source={{ uri: image }}
+                  style={{
+                    marginBottom: 10,
+                    width: 80,
+                    height: 80,
+                    borderRadius: 40,
+                  }}
+                />
+              ) : (
+                <Image
+                  source={require('../assets/unknow.png')}
+                  style={{
+                    marginBottom: 10,
+                    width: 80,
+                    height: 80,
+                    borderRadius: 40,
+                  }}
+                />
+              )}
               <Text
                 style={{
                   color: 'white',

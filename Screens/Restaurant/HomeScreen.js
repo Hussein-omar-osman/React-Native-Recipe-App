@@ -27,7 +27,8 @@ const HomeScreen = () => {
   const [activeCategory, setActiveCategory] = useState(0);
   const navigation = useNavigation();
   const { isOpen, setIsOpen } = useContext(BottomSheetContext);
-  const { user, expoPushToken, sendPushNotification } = useContext(UserContext);
+  const { user, expoPushToken, sendPushNotification, image } =
+    useContext(UserContext);
   console.log(user);
   console.log(user?._tokenResponse?.email);
   const trncate = (string) => {
@@ -48,16 +49,29 @@ const HomeScreen = () => {
               activeOpacity={0.7}
             >
               <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                <Image
-                  style={{
-                    width: SPACING * 4.5,
-                    height: SPACING * 4.5,
-                    borderRadius: SPACING * 3,
-                    marginRight: SPACING,
-                    opacity: isOpen ? 0.2 : 1,
-                  }}
-                  source={require('../../assets/unknow.png')}
-                />
+                {image ? (
+                  <Image
+                    style={{
+                      width: SPACING * 4.5,
+                      height: SPACING * 4.5,
+                      borderRadius: SPACING * 3,
+                      marginRight: SPACING,
+                      opacity: isOpen ? 0.2 : 1,
+                    }}
+                    source={{ uri: image }}
+                  />
+                ) : (
+                  <Image
+                    style={{
+                      width: SPACING * 4.5,
+                      height: SPACING * 4.5,
+                      borderRadius: SPACING * 3,
+                      marginRight: SPACING,
+                      opacity: isOpen ? 0.2 : 1,
+                    }}
+                    source={require('../../assets/unknow.png')}
+                  />
+                )}
                 <Text
                   style={{
                     fontSize: SPACING * 1.7,
