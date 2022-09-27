@@ -289,6 +289,7 @@ function EditProfile({ setEdit }) {
 }
 
 function ImageOptions({ setIsOpen }) {
+  const navigation = useNavigation();
   const sheetRef = useRef(null);
   const snapPoints = ['30%', '50%', '70%'];
 
@@ -321,9 +322,13 @@ function ImageOptions({ setIsOpen }) {
           <Text style={{ fontSize: 20 }}>Profile image</Text>
           <TouchableOpacity
             style={[styles2.loginButton, { backgroundColor: 'green' }]}
+            onPress={() => {
+              navigation.navigate('Camera');
+              setIsOpen(false);
+            }}
           >
             <Text style={{ color: '#fff', fontSize: 20, fontWeight: '700' }}>
-              View Image
+              Take Photo
             </Text>
           </TouchableOpacity>
           <TouchableOpacity
