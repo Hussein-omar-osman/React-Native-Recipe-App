@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import {
   View,
   SafeAreaView,
@@ -6,6 +6,10 @@ import {
   Share,
   TouchableOpacity,
   Platform,
+  KeyboardAvoidingView,
+  TouchableWithoutFeedback,
+  Keyboard,
+  TextInput,
 } from 'react-native';
 import {
   Avatar,
@@ -13,7 +17,10 @@ import {
   Caption,
   Text,
   TouchableRipple,
+  Button,
 } from 'react-native-paper';
+import styles2 from '../../componets/authComp/styles';
+import { Entypo } from '@expo/vector-icons';
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon2 from 'react-native-vector-icons/AntDesign';
@@ -21,6 +28,7 @@ import { useNavigation } from '@react-navigation/native';
 import { UserContext } from '../../context/UserContext';
 
 const ProfileScreen = () => {
+  const [edit, setEdit] = useState(false);
   const navigation = useNavigation();
   const { user } = useContext(UserContext);
   const trncate = (string) => {
@@ -48,6 +56,8 @@ const ProfileScreen = () => {
     }
   };
 
+  if (edit) return <EditProfile setEdit={setEdit} />;
+
   return (
     <SafeAreaView
       style={[
@@ -58,6 +68,11 @@ const ProfileScreen = () => {
       <View style={styles.userInfoSection}>
         <View style={{ flexDirection: 'row', marginTop: 15 }}>
           <Avatar.Image source={require('../../assets/unknow.png')} size={80} />
+          <View style={{ position: 'absolute', top: 60, left: 60 }}>
+            <TouchableOpacity onPress={() => alert('image')}>
+              <Entypo name='circle-with-plus' size={24} color='black' />
+            </TouchableOpacity>
+          </View>
           <View style={{ marginLeft: 20 }}>
             <Title
               style={[
@@ -71,6 +86,7 @@ const ProfileScreen = () => {
             >
               {trncate(user?._tokenResponse?.email)}
             </Title>
+
             <Caption style={styles.caption}>
               @{trncate(user?._tokenResponse?.email)}
             </Caption>
@@ -103,6 +119,7 @@ const ProfileScreen = () => {
 
       <View style={styles.infoBoxWrapper}>
         <TouchableOpacity
+          onPress={() => setEdit(true)}
           style={{
             // flexDirection: 'column',
             alignItem: 'center',
@@ -154,6 +171,99 @@ const ProfileScreen = () => {
 };
 
 export default ProfileScreen;
+
+function EditProfile({ setEdit }) {
+  return (
+    <KeyboardAvoidingView style={styles2.containerView} behavior='padding'>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={styles2.loginScreenContainer}>
+          <View style={styles2.loginFormView}>
+            <Text style={styles2.logoText}>Edit</Text>
+            <View
+              style={{
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginTop: -15,
+                marginBottom: 10,
+              }}
+            >
+              <Avatar.Image
+                source={require('../../assets/unknow.png')}
+                size={100}
+              />
+            </View>
+            <TextInput
+              placeholder='Username'
+              placeholderColor='#c4c3cb'
+              autoCapitalize='none'
+              style={[
+                styles2.loginFormTextInput,
+                { textTransform: 'lowercase' },
+              ]}
+            />
+
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <TextInput
+                placeholder='Tell'
+                placeholderColor='#c4c3cb'
+                style={[styles2.loginFormTextInput, { flex: 2 }]}
+              />
+            </View>
+
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <TextInput
+                placeholder='Location'
+                placeholderColor='#c4c3cb'
+                style={[styles2.loginFormTextInput, { flex: 2 }]}
+              />
+            </View>
+
+            <View style={{}}>
+              <TouchableOpacity
+                style={[styles2.loginButton, { backgroundColor: '#5860f5' }]}
+              >
+                <Text
+                  style={{ color: '#fff', fontSize: 20, fontWeight: '700' }}
+                >
+                  Save
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[styles2.loginButton, { backgroundColor: 'red' }]}
+                onPress={() => setEdit(false)}
+              >
+                <Text
+                  style={{ color: '#fff', fontSize: 20, fontWeight: '700' }}
+                >
+                  Cancel
+                </Text>
+              </TouchableOpacity>
+            </View>
+            <View
+              style={{
+                flexDirection: 'row',
+                marginHorizontal: 80,
+                marginVertical: 15,
+              }}
+            ></View>
+          </View>
+        </View>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
+  );
+}
 
 const styles = StyleSheet.create({
   container: {
