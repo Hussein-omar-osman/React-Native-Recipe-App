@@ -66,12 +66,19 @@ const ProfileScreen = () => {
       style={[
         styles.container,
         {
-          marginTop: Platform.OS === 'android' ? 45 : 0,
           backgroundColor: isOpen ? '#ccc' : 'white',
         },
       ]}
     >
-      <View style={styles.userInfoSection}>
+      <View
+        style={[
+          styles.userInfoSection,
+          {
+            opacity: isOpen ? 0.3 : 1,
+            marginTop: Platform.OS === 'android' ? 45 : 0,
+          },
+        ]}
+      >
         <View style={{ flexDirection: 'row', marginTop: 15 }}>
           <Avatar.Image
             source={require('../../assets/unknow.png')}
@@ -110,7 +117,12 @@ const ProfileScreen = () => {
         </TouchableOpacity>
       </View>
 
-      <View style={[styles.userInfoSection, { marginBottom: -10 }]}>
+      <View
+        style={[
+          styles.userInfoSection,
+          { marginBottom: -10, opacity: isOpen ? 0.3 : 1 },
+        ]}
+      >
         <View style={styles.row}>
           <Icon name='map-marker-radius' color='#777777' size={20} />
           <Text style={{ color: '#777777', marginLeft: 20 }}>-, -</Text>
@@ -127,7 +139,7 @@ const ProfileScreen = () => {
         </View>
       </View>
 
-      <View style={styles.infoBoxWrapper}>
+      <View style={[styles.infoBoxWrapper, { opacity: isOpen ? 0.3 : 1 }]}>
         <TouchableOpacity
           onPress={() => setEdit(true)}
           style={{
@@ -144,7 +156,7 @@ const ProfileScreen = () => {
         </TouchableOpacity>
       </View>
 
-      <View style={styles.menuWrapper}>
+      <View style={[styles.menuWrapper, { opacity: isOpen ? 0.3 : 1 }]}>
         <TouchableRipple onPress={() => {}}>
           <View style={styles.menuItem}>
             <Icon name='heart-outline' color='#FF6347' size={25} />

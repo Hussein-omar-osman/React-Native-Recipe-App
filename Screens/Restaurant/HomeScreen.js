@@ -75,13 +75,14 @@ const HomeScreen = () => {
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
               <TouchableOpacity
                 style={{ marginRight: SPACING, opacity: isOpen ? 0.3 : 1 }}
-                onPress={async () => {
-                  await sendPushNotification(
-                    expoPushToken,
+                // onPress={async () => {
+                //   await sendPushNotification(
+                //     expoPushToken,
 
-                    'This is a trial push notification'
-                  );
-                }}
+                //     'This is a trial push notification'
+                //   );
+                // }}
+                onPress={() => navigation.navigate('Camera')}
               >
                 <Ionicons
                   name='notifications-outline'
