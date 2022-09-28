@@ -20,6 +20,7 @@ const BottomSheetComp = () => {
     setUser,
     expoPushToken,
     sendPushNotification,
+    setImage,
   } = useContext(UserContext);
 
   // variables
@@ -117,6 +118,7 @@ const BottomSheetComp = () => {
                   setFirstLogin((prev) => !prev);
                   setIsOpen(false);
                   setUser(null);
+                  setImage(null);
                   logOut();
                 }}
               >

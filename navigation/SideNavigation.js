@@ -8,6 +8,8 @@ import { Entypo } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { UserContext } from '../context/UserContext';
 import Profile from '../Screens/Restaurant/Profile';
+import BottomTabsNavigation from './BottomTabsNavigation';
+import ProfileStack from './ProfileStack';
 const Drawer = createDrawerNavigator();
 
 export default function SideNavigation() {
@@ -25,7 +27,7 @@ export default function SideNavigation() {
     >
       <Drawer.Screen
         name='Home'
-        component={HomeScreen}
+        component={BottomTabsNavigation}
         options={{
           drawerIcon: ({ color, size }) => (
             <Ionicons name='md-home-sharp' size={size} color={color} />
@@ -45,7 +47,7 @@ export default function SideNavigation() {
       ) : (
         <Drawer.Screen
           name='Profile'
-          component={Profile}
+          component={ProfileStack}
           options={{
             drawerIcon: ({ color, size }) => (
               <MaterialCommunityIcons

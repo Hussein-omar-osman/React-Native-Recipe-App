@@ -111,7 +111,7 @@ const CustomDrawer = (props) => {
       </DrawerContentScrollView>
       <View style={{ padding: 10, borderTopWidth: 1, borderColor: '#ccc' }}>
         <TouchableOpacity
-          style={{ paddingVertical: 15 }}
+          style={{ paddingVertical: 15, marginBottom: user == null && 15 }}
           onPress={() => {
             props.navigation.closeDrawer();
             onShare();

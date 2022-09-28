@@ -7,6 +7,7 @@ import { StatusBar } from 'expo-status-bar';
 import UserProvider from './context/UserContext';
 import * as Device from 'expo-device';
 import * as Notifications from 'expo-notifications';
+import SideNavigation from './navigation/SideNavigation';
 
 const Stack = createNativeStackNavigator();
 
@@ -55,7 +56,7 @@ const App = () => {
         sendPushNotification={sendPushNotification}
       >
         <BottomSheetProvider>
-          <BottomTabsNavigation />
+          <SideNavigation />
         </BottomSheetProvider>
       </UserProvider>
       <StatusBar style='auto' />
