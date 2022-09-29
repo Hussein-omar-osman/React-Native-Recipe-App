@@ -138,7 +138,7 @@ const CustomDrawer = (props) => {
         </TouchableOpacity>
         {user != null && (
           <TouchableOpacity
-            style={{ paddingVertical: 15 }}
+            style={{ paddingVertical: 15, marginBottom: 25 }}
             onPress={() => {
               props.navigation.closeDrawer();
               setIsOpen(true);
