@@ -1,6 +1,9 @@
 import React, { useCallback, useRef, useContext } from 'react';
 import { StyleSheet, View, Text, Button, Platform } from 'react-native';
-import BottomSheet, { BottomSheetView } from '@gorhom/bottom-sheet';
+import BottomSheet, {
+  BottomSheetBackdrop,
+  BottomSheetView,
+} from '@gorhom/bottom-sheet';
 import { BottomSheetContext } from '../context/BottomSheetContext';
 import { AntDesign } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -50,6 +53,16 @@ const BottomSheetComp = () => {
   const handleClosePress = useCallback(() => {
     sheetRef.current?.close();
   }, []);
+  const renderBackdrop = useCallback(
+    (props) => (
+      <BottomSheetBackdrop
+        {...props}
+        enableTouchThrough={false}
+        pressBehavior='close'
+      />
+    ),
+    []
+  );
 
   // render
   if (isOpen) {
@@ -60,6 +73,7 @@ const BottomSheetComp = () => {
         // onChange={handleSheetChange}
         enablePanDownToClose={true}
         onClose={() => setIsOpen(false)}
+        backdropComponent={renderBackdrop}
       >
         <BottomSheetView
           style={{
